@@ -12,3 +12,7 @@ python-jose[cryptography]==3.3.0
 email-validator==2.1.1
 pytesseract==0.3.13
 Pillow==10.3.0
+beautifulsoup4==4.12.3
+lxml==5.2.1
+pytest-mock==3.14.0
+freezegun==1.5.1
