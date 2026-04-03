@@ -51,7 +51,8 @@
       "dob_year": "Year",
       "numero_error": "Invalid format (e.g. GUAN94012812)",
       "sequentiel_error": "Two digits required",
-      "submit": "Confirm"
+      "submit": "Confirm",
+      "review_title": "Review your information"
     }
   }
 }

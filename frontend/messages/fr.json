@@ -51,7 +51,8 @@
       "dob_year": "Année",
       "numero_error": "Format invalide (ex. GUAN94012812)",
       "sequentiel_error": "Deux chiffres requis",
-      "submit": "Confirmer"
+      "submit": "Confirmer",
+      "review_title": "Vérifiez vos informations"
     }
   }
 }

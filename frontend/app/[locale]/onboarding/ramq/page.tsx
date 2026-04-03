@@ -43,7 +43,7 @@ export default function RamqPage({ params: { locale } }: { params: { locale: str
       if (!res.ok) throw new Error('ocr failed');
       const data: RamqData = await res.json();
       setRamq(data);
-      router.push(`/${locale}/dashboard`);
+      router.push(`/${locale}/onboarding/ramq/review`);
     } catch {
       setScanError(t('scan_error'));
       setView('choose');
