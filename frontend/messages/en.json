@@ -54,5 +54,17 @@
       "submit": "Confirm",
       "review_title": "Review your information"
     }
+  },
+  "dashboard": {
+    "title": "Available appointments",
+    "loading": "Searching for clinics...",
+    "no_results": "No clinics found. We'll keep searching.",
+    "book": "Book",
+    "book_soon": "Booking coming soon",
+    "slots_count": "slots available",
+    "new_slot": "New slot available!",
+    "connection_lost": "Connection lost. Retrying...",
+    "searching_again": "Updating in",
+    "minutes": "min"
   }
 }

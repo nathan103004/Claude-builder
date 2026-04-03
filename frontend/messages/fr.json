@@ -54,5 +54,17 @@
       "submit": "Confirmer",
       "review_title": "Vérifiez vos informations"
     }
+  },
+  "dashboard": {
+    "title": "Rendez-vous disponibles",
+    "loading": "Recherche de cliniques en cours...",
+    "no_results": "Aucune clinique trouvée. Nous continuons la recherche.",
+    "book": "Réserver",
+    "book_soon": "Réservation bientôt disponible",
+    "slots_count": "créneaux disponibles",
+    "new_slot": "Nouveau créneau disponible !",
+    "connection_lost": "Connexion perdue. Nouvelle tentative...",
+    "searching_again": "Mise à jour dans",
+    "minutes": "min"
   }
 }
