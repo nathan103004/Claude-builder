@@ -102,6 +102,7 @@ export default function RamqReviewPage({ params: { locale } }: { params: { local
         {t('submit')}
       </button>
       <button type="button" onClick={() => router.push(`/${locale}/onboarding/ramq`)}
+        aria-label="Go back"
         className="text-sm text-gray-500 underline text-center focus-visible:ring-2 focus-visible:ring-blue-500 rounded">
         ←
       </button>
