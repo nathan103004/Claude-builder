@@ -25,3 +25,11 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Text size scaling */
+:root { --text-scale: 1rem; }
+[data-text-size="sm"] { --text-scale: 0.875rem; }
+[data-text-size="md"] { --text-scale: 1rem; }
+[data-text-size="lg"] { --text-scale: 1.125rem; }
+[data-text-size="xl"] { --text-scale: 1.25rem; }
+html { font-size: var(--text-scale); }

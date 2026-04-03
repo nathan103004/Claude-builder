@@ -3,5 +3,55 @@
     "title": "SantéNav",
     "subtitle": "Find the right clinic, fast.",
     "language_toggle": "Français"
+  },
+  "onboarding": {
+    "language": {
+      "title": "Choose your language",
+      "fr": "Français",
+      "en": "English"
+    },
+    "account": {
+      "title": "Welcome to SantéNav",
+      "guest": "Continue without account",
+      "create": "Create account",
+      "email": "Email address",
+      "password": "Password",
+      "submit": "Create my account",
+      "error_duplicate": "This email address is already registered.",
+      "error_generic": "Something went wrong. Please try again."
+    },
+    "textSize": {
+      "title": "Text size",
+      "sm": "Small",
+      "md": "Medium",
+      "lg": "Large",
+      "xl": "Extra large",
+      "next": "Continue"
+    },
+    "postalCode": {
+      "title": "Your postal code",
+      "label": "Postal code (e.g. H9K 1P9)",
+      "error": "Please enter a valid Quebec postal code (e.g. H9K 1P9).",
+      "next": "Continue"
+    },
+    "ramq": {
+      "title": "Health insurance card",
+      "scan": "Scan my card",
+      "manual": "Enter manually",
+      "skip": "Skip for now",
+      "scanning": "Reading card...",
+      "scan_error": "Could not read card automatically.",
+      "prenom": "First name",
+      "nom": "Last name",
+      "numero": "Health insurance number",
+      "sequentiel": "Sequential number",
+      "dob": "Date of birth",
+      "dob_day": "Day",
+      "dob_month": "Month",
+      "dob_year": "Year",
+      "numero_error": "Invalid format (e.g. GUAN94012812)",
+      "sequentiel_error": "Two digits required",
+      "submit": "Confirm"
+    }
   }
 }

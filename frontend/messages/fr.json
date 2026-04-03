@@ -3,5 +3,55 @@
     "title": "SantéNav",
     "subtitle": "Trouvez la bonne clinique rapidement.",
     "language_toggle": "English"
+  },
+  "onboarding": {
+    "language": {
+      "title": "Choisissez votre langue",
+      "fr": "Français",
+      "en": "English"
+    },
+    "account": {
+      "title": "Bienvenue sur SantéNav",
+      "guest": "Continuer sans compte",
+      "create": "Créer un compte",
+      "email": "Adresse courriel",
+      "password": "Mot de passe",
+      "submit": "Créer mon compte",
+      "error_duplicate": "Cette adresse courriel est déjà utilisée.",
+      "error_generic": "Une erreur est survenue. Veuillez réessayer."
+    },
+    "textSize": {
+      "title": "Taille du texte",
+      "sm": "Petit",
+      "md": "Moyen",
+      "lg": "Grand",
+      "xl": "Très grand",
+      "next": "Continuer"
+    },
+    "postalCode": {
+      "title": "Votre code postal",
+      "label": "Code postal (ex. H9K 1P9)",
+      "error": "Veuillez entrer un code postal québécois valide (ex. H9K 1P9).",
+      "next": "Continuer"
+    },
+    "ramq": {
+      "title": "Carte d'assurance maladie",
+      "scan": "Scanner ma carte",
+      "manual": "Entrer manuellement",
+      "skip": "Passer pour l'instant",
+      "scanning": "Lecture en cours...",
+      "scan_error": "Impossible de lire la carte automatiquement.",
+      "prenom": "Prénom",
+      "nom": "Nom",
+      "numero": "Numéro d'assurance maladie",
+      "sequentiel": "Numéro séquentiel",
+      "dob": "Date de naissance",
+      "dob_day": "Jour",
+      "dob_month": "Mois",
+      "dob_year": "Année",
+      "numero_error": "Format invalide (ex. GUAN94012812)",
+      "sequentiel_error": "Deux chiffres requis",
+      "submit": "Confirmer"
+    }
   }
 }
