@@ -9,7 +9,8 @@ def test_book_locates_slot_by_id():
     driver = MagicMock()
     slot_el = MagicMock()
     driver.find_element.return_value = slot_el
-    with patch("rvsq.booking._wait_for_confirmation", return_value=("RV-001", "Clinique Test", "2026-04-05", "09:30")):
+    with patch("rvsq.booking._assert_selectors_configured"), \
+         patch("rvsq.booking._wait_for_confirmation", return_value=("RV-001", "Clinique Test", "2026-04-05", "09:30")):
         book_slot(driver, "slot-abc-123")
     driver.find_element.assert_called()
 
@@ -17,7 +18,8 @@ def test_book_locates_slot_by_id():
 def test_book_returns_confirmation_on_success():
     from rvsq.booking import book_slot
     driver = MagicMock()
-    with patch("rvsq.booking._locate_and_click_slot"), \
+    with patch("rvsq.booking._assert_selectors_configured"), \
+         patch("rvsq.booking._locate_and_click_slot"), \
          patch("rvsq.booking._wait_for_confirmation",
                return_value=("RV-9482", "Clinique Plateau", "2026-04-05", "09:30")):
         result = book_slot(driver, "slot-abc-123")
@@ -29,7 +31,8 @@ def test_book_returns_confirmation_on_success():
 def test_book_returns_slot_taken_error():
     from rvsq.booking import book_slot
     driver = MagicMock()
-    with patch("rvsq.booking._locate_and_click_slot"), \
+    with patch("rvsq.booking._assert_selectors_configured"), \
+         patch("rvsq.booking._locate_and_click_slot"), \
          patch("rvsq.booking._wait_for_confirmation", return_value=None), \
          patch("rvsq.booking._check_slot_taken", return_value=True):
         result = book_slot(driver, "slot-abc-123")
@@ -40,7 +43,8 @@ def test_book_returns_slot_taken_error():
 def test_book_returns_session_expired_error():
     from rvsq.booking import book_slot
     driver = MagicMock()
-    with patch("rvsq.booking._locate_and_click_slot"), \
+    with patch("rvsq.booking._assert_selectors_configured"), \
+         patch("rvsq.booking._locate_and_click_slot"), \
          patch("rvsq.booking._wait_for_confirmation", return_value=None), \
          patch("rvsq.booking._check_slot_taken", return_value=False), \
          patch("rvsq.booking._check_session_expired", return_value=True):
@@ -52,7 +56,8 @@ def test_book_returns_session_expired_error():
 def test_book_returns_error_on_webdriver_exception():
     from rvsq.booking import book_slot
     driver = MagicMock()
-    with patch("rvsq.booking._locate_and_click_slot", side_effect=WebDriverException("crash")):
+    with patch("rvsq.booking._assert_selectors_configured"), \
+         patch("rvsq.booking._locate_and_click_slot", side_effect=WebDriverException("crash")):
         result = book_slot(driver, "slot-abc-123")
     assert isinstance(result, RVSQError)
     assert result.code == "BOOKING_FAILED"

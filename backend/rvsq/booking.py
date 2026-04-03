@@ -46,8 +46,26 @@ def _check_session_expired(driver) -> bool:
     return len(driver.find_elements(By.CSS_SELECTOR, SESSION_EXPIRED_CSS)) > 0
 
 
+def _assert_selectors_configured() -> None:
+    placeholders = {"REPLACE"}
+    unconfigured = [
+        name for name, val in [
+            ("SLOT_BUTTON_CSS", SLOT_BUTTON_CSS),
+            ("CONFIRM_PAGE_CSS", CONFIRM_PAGE_CSS),
+            ("CONFIRM_NUMBER_CSS", CONFIRM_NUMBER_CSS),
+            ("SLOT_TAKEN_CSS", SLOT_TAKEN_CSS),
+            ("SESSION_EXPIRED_CSS", SESSION_EXPIRED_CSS),
+        ] if val in placeholders
+    ]
+    if unconfigured:
+        raise NotImplementedError(
+            f"rvsq/booking.py: These DOM selectors need real values from RVSQ DevTools inspection: {unconfigured}"
+        )
+
+
 def book_slot(driver: webdriver.Chrome, slot_id: str) -> BookingResult | RVSQError:
     try:
+        _assert_selectors_configured()
         _locate_and_click_slot(driver, slot_id)
         confirmation = _wait_for_confirmation(driver)
         if confirmation:

@@ -77,11 +77,33 @@ def _wait_for_results(driver):
     )
 
 
+def _assert_selectors_configured() -> None:
+    placeholders = {"REPLACE", "REPLACE_CHECKBOX_ID"}
+    unconfigured = [
+        name for name, val in [
+            ("SEARCH_NAV_SELECTOR", SEARCH_NAV_SELECTOR),
+            ("POSTAL_CODE_ID", POSTAL_CODE_ID),
+            ("RADIUS_SELECT_ID", RADIUS_SELECT_ID),
+            ("DATE_ID", DATE_ID),
+            ("SERVICE_TYPE_SELECT_ID", SERVICE_TYPE_SELECT_ID),
+            ("SEARCH_BUTTON_ID", SEARCH_BUTTON_ID),
+            ("RESULTS_CONTAINER_CSS", RESULTS_CONTAINER_CSS),
+            ("NO_RESULTS_CSS", NO_RESULTS_CSS),
+            *[(f"MOMENTS[{k}]", v) for k, v in MOMENTS.items()],
+        ] if val in placeholders
+    ]
+    if unconfigured:
+        raise NotImplementedError(
+            f"rvsq/search.py: These DOM selectors need real values from RVSQ DevTools inspection: {unconfigured}"
+        )
+
+
 def search_clinics(driver: webdriver.Chrome, params: SearchParams) -> list[ClinicCard] | RVSQError:
     if params.service_type not in SERVICE_TYPE_MAP:
         return RVSQError(code="INVALID_SERVICE_TYPE", message=f"Unknown service type: {params.service_type}")
 
     try:
+        _assert_selectors_configured()
         _navigate_to_search_form(driver)
         _fill_postal_code(driver, params.code_postal)
         _set_radius(driver, params.rayon_km)

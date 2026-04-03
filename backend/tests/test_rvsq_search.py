@@ -34,7 +34,8 @@ def test_search_fills_postal_code():
     driver = MagicMock()
     field = MagicMock()
     driver.find_element.return_value = field
-    with patch("rvsq.search._navigate_to_search_form"), \
+    with patch("rvsq.search._assert_selectors_configured"), \
+         patch("rvsq.search._navigate_to_search_form"), \
          patch("rvsq.search._set_service_type"), \
          patch("rvsq.search._set_moments"), \
          patch("rvsq.search._click_search"), \
@@ -51,7 +52,8 @@ def test_search_returns_error_on_session_expired():
     from selenium.common.exceptions import WebDriverException
     driver = MagicMock()
     driver.find_element.side_effect = WebDriverException("session expired")
-    with patch("rvsq.search._navigate_to_search_form", side_effect=WebDriverException("session expired")):
+    with patch("rvsq.search._assert_selectors_configured"), \
+         patch("rvsq.search._navigate_to_search_form", side_effect=WebDriverException("session expired")):
         result = search_clinics(driver, _params())
     assert isinstance(result, RVSQError)
     assert result.code == "SESSION_EXPIRED"
@@ -63,7 +65,8 @@ def test_search_checks_all_moment_checkboxes():
     checkbox = MagicMock()
     checkbox.is_selected.return_value = False
     driver.find_element.return_value = checkbox
-    with patch("rvsq.search._navigate_to_search_form"), \
+    with patch("rvsq.search._assert_selectors_configured"), \
+         patch("rvsq.search._navigate_to_search_form"), \
          patch("rvsq.search._fill_postal_code"), \
          patch("rvsq.search._set_radius"), \
          patch("rvsq.search._set_date"), \

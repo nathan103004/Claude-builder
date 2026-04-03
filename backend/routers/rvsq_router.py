@@ -51,6 +51,8 @@ def _raise_if_error(result: Any) -> None:
 
 
 def _get_valid_session(session_id: str):
+    if not session_store.is_session_valid(session_id):
+        return None
     return session_store.get_session(session_id)
 
 

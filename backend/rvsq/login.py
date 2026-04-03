@@ -59,8 +59,33 @@ def _wait_for_post_login(driver: webdriver.Chrome) -> bool:
     return len(error_els) == 0
 
 
+def _assert_selectors_configured() -> None:
+    """Raise NotImplementedError if any selector is still a placeholder."""
+    placeholders = {"REPLACE_WITH_REAL_ID", "REPLACE_WITH_REAL_CSS_SELECTOR"}
+    unconfigured = [
+        name for name, val in [
+            ("LOGIN_PRENOM_ID", LOGIN_PRENOM_ID),
+            ("LOGIN_NOM_ID", LOGIN_NOM_ID),
+            ("LOGIN_RAMQ_ID", LOGIN_RAMQ_ID),
+            ("LOGIN_SEQ_ID", LOGIN_SEQ_ID),
+            ("LOGIN_JOUR_ID", LOGIN_JOUR_ID),
+            ("LOGIN_MOIS_ID", LOGIN_MOIS_ID),
+            ("LOGIN_ANNEE_ID", LOGIN_ANNEE_ID),
+            ("LOGIN_CONSENT_ID", LOGIN_CONSENT_ID),
+            ("LOGIN_SUBMIT_ID", LOGIN_SUBMIT_ID),
+            ("LOGIN_ERROR_SELECTOR", LOGIN_ERROR_SELECTOR),
+            ("POST_LOGIN_SELECTOR", POST_LOGIN_SELECTOR),
+        ] if val in placeholders
+    ]
+    if unconfigured:
+        raise NotImplementedError(
+            f"rvsq/login.py: These DOM selectors need real values from RVSQ DevTools inspection: {unconfigured}"
+        )
+
+
 def login_rvsq(driver: webdriver.Chrome, credentials: RAMQCredentials) -> None | RVSQError:
     try:
+        _assert_selectors_configured()
         title = navigate_to_rvsq(driver)
         if "just a moment" in title.lower():
             return RVSQError(code="CLOUDFLARE", message="RVSQ portal blocked by Cloudflare challenge.")

@@ -25,7 +25,8 @@ def _mock_driver(post_login_has_error=False, post_login_has_success=True):
 def test_login_calls_navigate_to_rvsq():
     from rvsq.login import login_rvsq
     driver = _mock_driver()
-    with patch("rvsq.login.navigate_to_rvsq") as mock_nav, \
+    with patch("rvsq.login._assert_selectors_configured"), \
+         patch("rvsq.login.navigate_to_rvsq") as mock_nav, \
          patch("rvsq.login._wait_for_form"), \
          patch("rvsq.login._wait_for_post_login", return_value=True):
         mock_nav.return_value = "Rendez-vous"
@@ -38,7 +39,8 @@ def test_login_fills_all_fields():
     driver = _mock_driver()
     field_element = MagicMock()
     driver.find_element.return_value = field_element
-    with patch("rvsq.login.navigate_to_rvsq", return_value="Rendez-vous"), \
+    with patch("rvsq.login._assert_selectors_configured"), \
+         patch("rvsq.login.navigate_to_rvsq", return_value="Rendez-vous"), \
          patch("rvsq.login._wait_for_form"), \
          patch("rvsq.login._wait_for_post_login", return_value=True):
         login_rvsq(driver, _creds())
@@ -53,7 +55,8 @@ def test_login_clicks_consent_and_submit():
     submit = MagicMock()
     consent = MagicMock()
     consent.is_selected.return_value = False
-    with patch("rvsq.login.navigate_to_rvsq", return_value="Rendez-vous"), \
+    with patch("rvsq.login._assert_selectors_configured"), \
+         patch("rvsq.login.navigate_to_rvsq", return_value="Rendez-vous"), \
          patch("rvsq.login._wait_for_form"), \
          patch("rvsq.login._find_consent_checkbox", return_value=consent), \
          patch("rvsq.login._find_submit_button", return_value=submit), \
@@ -66,7 +69,8 @@ def test_login_clicks_consent_and_submit():
 def test_login_returns_none_on_success():
     from rvsq.login import login_rvsq
     driver = _mock_driver()
-    with patch("rvsq.login.navigate_to_rvsq", return_value="Rendez-vous"), \
+    with patch("rvsq.login._assert_selectors_configured"), \
+         patch("rvsq.login.navigate_to_rvsq", return_value="Rendez-vous"), \
          patch("rvsq.login._wait_for_form"), \
          patch("rvsq.login._find_consent_checkbox", return_value=MagicMock(is_selected=lambda: False)), \
          patch("rvsq.login._find_submit_button", return_value=MagicMock()), \
@@ -78,7 +82,8 @@ def test_login_returns_none_on_success():
 def test_login_returns_error_on_failure():
     from rvsq.login import login_rvsq
     driver = _mock_driver()
-    with patch("rvsq.login.navigate_to_rvsq", return_value="Rendez-vous"), \
+    with patch("rvsq.login._assert_selectors_configured"), \
+         patch("rvsq.login.navigate_to_rvsq", return_value="Rendez-vous"), \
          patch("rvsq.login._wait_for_form"), \
          patch("rvsq.login._find_consent_checkbox", return_value=MagicMock(is_selected=lambda: False)), \
          patch("rvsq.login._find_submit_button", return_value=MagicMock()), \
@@ -91,7 +96,8 @@ def test_login_returns_error_on_failure():
 def test_login_returns_cloudflare_error_on_timeout():
     from rvsq.login import login_rvsq
     driver = _mock_driver()
-    with patch("rvsq.login.navigate_to_rvsq", return_value="just a moment"):
+    with patch("rvsq.login._assert_selectors_configured"), \
+         patch("rvsq.login.navigate_to_rvsq", return_value="just a moment"):
         result = login_rvsq(driver, _creds())
     assert isinstance(result, RVSQError)
     assert result.code == "CLOUDFLARE"
