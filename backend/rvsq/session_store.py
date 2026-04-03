@@ -22,7 +22,7 @@ _TTL_SECONDS = 1800  # 30 minutes
 def create_session(credentials: RAMQCredentials) -> str:
     session_id = str(uuid.uuid4())
     driver = get_driver()
-    now = time.mktime(time.gmtime())
+    now = time.time()
     with _lock:
         _store[session_id] = {
             "driver": driver,
@@ -41,7 +41,7 @@ def get_session(session_id: str) -> Optional[_SessionEntry]:
 def touch_session(session_id: str) -> None:
     with _lock:
         if session_id in _store:
-            _store[session_id]["last_used_at"] = time.mktime(time.gmtime())
+            _store[session_id]["last_used_at"] = time.time()
 
 
 def delete_session(session_id: str) -> None:
@@ -58,7 +58,7 @@ def is_session_valid(session_id: str, max_age_seconds: int = _TTL_SECONDS) -> bo
     entry = get_session(session_id)
     if not entry:
         return False
-    return (time.mktime(time.gmtime()) - entry["last_used_at"]) < max_age_seconds
+    return (time.time() - entry["last_used_at"]) < max_age_seconds
 
 
 def _get_login_rvsq():

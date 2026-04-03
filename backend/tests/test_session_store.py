@@ -1,3 +1,4 @@
+import calendar
 import threading
 import time
 import uuid
@@ -92,7 +93,7 @@ def test_touch_session_updates_last_used():
         ss.touch_session(sid)
     entry = ss.get_session(sid)
     assert entry["last_used_at"] == pytest.approx(
-        time.mktime(time.strptime("2026-04-03 10:20:00", "%Y-%m-%d %H:%M:%S")), abs=2
+        calendar.timegm(time.strptime("2026-04-03 10:20:00", "%Y-%m-%d %H:%M:%S")), abs=2
     )
 
 
