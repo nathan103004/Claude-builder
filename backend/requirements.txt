@@ -10,3 +10,5 @@ anyio[trio]==4.4.0
 bcrypt==5.0.0
 python-jose[cryptography]==3.3.0
 email-validator==2.1.1
+pytesseract==0.3.13
+Pillow==10.3.0
