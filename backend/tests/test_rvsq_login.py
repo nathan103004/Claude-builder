@@ -58,6 +58,7 @@ def test_login_clicks_consent_and_submit():
     with patch("rvsq.login._assert_selectors_configured"), \
          patch("rvsq.login.navigate_to_rvsq", return_value="Rendez-vous"), \
          patch("rvsq.login._wait_for_form"), \
+         patch("rvsq.login.Select"), \
          patch("rvsq.login._find_consent_checkbox", return_value=consent), \
          patch("rvsq.login._find_submit_button", return_value=submit), \
          patch("rvsq.login._wait_for_post_login", return_value=True):
@@ -72,6 +73,7 @@ def test_login_returns_none_on_success():
     with patch("rvsq.login._assert_selectors_configured"), \
          patch("rvsq.login.navigate_to_rvsq", return_value="Rendez-vous"), \
          patch("rvsq.login._wait_for_form"), \
+         patch("rvsq.login.Select"), \
          patch("rvsq.login._find_consent_checkbox", return_value=MagicMock(is_selected=lambda: False)), \
          patch("rvsq.login._find_submit_button", return_value=MagicMock()), \
          patch("rvsq.login._wait_for_post_login", return_value=True):
