@@ -65,6 +65,7 @@
     "new_slot": "New slot available!",
     "connection_lost": "Connection lost. Retrying...",
     "searching_again": "Updating in",
-    "minutes": "min"
+    "minutes": "min",
+    "paused": "No appointments found. Checking again in 1 hour."
   }
 }

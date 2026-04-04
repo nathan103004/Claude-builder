@@ -22,6 +22,7 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
   const [clinics, setClinics] = useState<ClinicCard[]>([]);
   const [loading, setLoading] = useState(true);
   const [connError, setConnError] = useState(false);
+  const [paused, setPaused] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
   const prevSlotKeysRef = useRef<Set<string>>(new Set());
@@ -70,12 +71,17 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
           try {
             const payload = JSON.parse(e.data);
             if (Array.isArray(payload.data)) {
+              setPaused(false);
               detectNewSlots(payload.data);
               setClinics(payload.data);
               setLoading(false);
               setConnError(false);
             }
           } catch {}
+        });
+
+        es.addEventListener('paused', (e: MessageEvent) => {
+          if (!cancelled) setPaused(true);
         });
 
         es.addEventListener('error', () => {
@@ -124,6 +130,14 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
         {connError && (
           <div role="alert" className="bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-xl px-4 py-3 mb-4 text-sm">
             {t('connection_lost')}
+          </div>
+        )}
+
+        {/* Paused banner */}
+        {paused && (
+          <div role="status" aria-live="polite"
+            className="rounded-lg bg-yellow-50 border border-yellow-200 px-4 py-3 text-sm text-yellow-800 text-center mb-4">
+            {t('paused')}
           </div>
         )}
 

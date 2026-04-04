@@ -65,6 +65,7 @@
     "new_slot": "Nouveau créneau disponible !",
     "connection_lost": "Connexion perdue. Nouvelle tentative...",
     "searching_again": "Mise à jour dans",
-    "minutes": "min"
+    "minutes": "min",
+    "paused": "Aucun rendez-vous trouvé. Nouvelle vérification dans 1 heure."
   }
 }
