@@ -65,6 +65,36 @@
     "new_slot": "Nouveau créneau disponible !",
     "connection_lost": "Connexion perdue. Nouvelle tentative...",
     "searching_again": "Mise à jour dans",
-    "minutes": "min"
+    "minutes": "min",
+    "serviceType": {
+      "heading": "Quel type de rendez-vous souhaitez-vous?",
+      "consultation_urgente": "Consultation urgente",
+      "consultation_urgente_desc": "Besoin de soins aujourd'hui",
+      "consultation_semi_urgente": "Consultation semi-urgente",
+      "consultation_semi_urgente_desc": "Besoin de soins dans 1 à 2 jours",
+      "suivi": "Suivi",
+      "suivi_desc": "Consultation non urgente avec un médecin",
+      "suivi_pediatrique": "Suivi pédiatrique",
+      "suivi_pediatrique_desc": "Suivi pour un enfant",
+      "suivi_grossesse": "Suivi de grossesse",
+      "suivi_grossesse_desc": "Visite de soins prénataux",
+      "emergency": "Urgence",
+      "emergency_desc": "Situation mettant la vie en danger — appelez le 911"
+    },
+    "emergency": {
+      "heading": "Appelez le 911 maintenant",
+      "subheading": "C'est une urgence mettant la vie en danger. N'attendez pas.",
+      "script_heading": "Script pour le répartiteur",
+      "script_intro": "Lorsque le répartiteur répond, dites :",
+      "label_name": "Votre nom",
+      "label_location": "Votre emplacement",
+      "label_ramq": "Numéro d'assurance maladie",
+      "placeholder_name": "Entrez votre nom complet",
+      "placeholder_location": "Entrez votre adresse complète ou votre emplacement",
+      "placeholder_ramq": "Entrez votre numéro RAMQ",
+      "back": "← Retour aux types de rendez-vous",
+      "call_button": "Appeler le 911",
+      "disclaimer": "SantéNav ne peut pas contacter les services d'urgence en votre nom. Appelez le 911 directement."
+    }
   }
 }
