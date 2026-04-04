@@ -56,6 +56,23 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
     document.documentElement.setAttribute('data-text-size', state.textSize);
   }, [state]);
 
+  useEffect(() => {
+    if (!state.token) return;
+    fetch('/api/auth/me/preferences', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${state.token}`,
+      },
+      body: JSON.stringify({
+        email_notifications: false,
+        locale: state.locale,
+        text_size: state.textSize,
+        postal_code: state.postalCode,
+      }),
+    }).catch(() => {});
+  }, [state.token, state.locale, state.textSize, state.postalCode]);
+
   const set = <K extends keyof OnboardingState>(key: K) =>
     (value: OnboardingState[K]) => setState(prev => ({ ...prev, [key]: value }));
 

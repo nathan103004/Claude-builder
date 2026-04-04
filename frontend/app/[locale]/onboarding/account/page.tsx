@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import { useOnboarding } from '@/context/OnboardingContext';
+import { useOnboarding, TextSize } from '@/context/OnboardingContext';
 
 export default function AccountPage({ params: { locale } }: { params: { locale: string } }) {
   const t = useTranslations('onboarding.account');
   const router = useRouter();
-  const { setMode, setToken } = useOnboarding();
+  const { setMode, setToken, setLocale, setTextSize, setPostalCode } = useOnboarding();
 
   const [showForm, setShowForm] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
@@ -68,6 +68,18 @@ export default function AccountPage({ params: { locale } }: { params: { locale: 
       if (!res.ok) { setError(t('error_generic')); return; }
       setMode('account');
       setToken(data.token);
+      // After setToken, load saved preferences
+      try {
+        const prefsRes = await fetch('/api/auth/me/preferences', {
+          headers: { Authorization: `Bearer ${data.token}` },
+        });
+        if (prefsRes.ok) {
+          const prefs = await prefsRes.json();
+          if (prefs.locale) setLocale(prefs.locale);
+          if (prefs.text_size) setTextSize(prefs.text_size as TextSize);
+          if (prefs.postal_code) setPostalCode(prefs.postal_code);
+        }
+      } catch {}
       router.push(`/${locale}/onboarding/text-size`);
     } catch {
       setError(t('error_generic'));
