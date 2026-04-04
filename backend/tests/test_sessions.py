@@ -178,3 +178,61 @@ async def test_poll_sends_paused_event_after_no_results(monkeypatch):
     assert "paused" in event_types, f"Expected paused event, got: {event_types}"
     paused_event = next(e for e in events if e.get("type") == "paused")
     assert paused_event.get("retry_in") == 3600
+
+
+@pytest.mark.asyncio
+async def test_poll_resumes_after_pause(monkeypatch):
+    """After pausing, _poll sleeps _PAUSE_DURATION then pushes another clinics event."""
+    import uuid as _uuid
+    from routers import sessions as sessions_mod
+    from routers.sessions import _sessions, _poll
+
+    # Return empty slots always
+    def empty_search(postal_code, service_type):
+        return [{"clinic_name": "Clinique Test", "address": "123", "slots": []}]
+
+    monkeypatch.setattr(sessions_mod, "_stub_rvsq_search", empty_search)
+
+    # Trigger pause immediately, and skip the actual waits
+    monkeypatch.setattr(sessions_mod, "_NO_RESULTS_TIMEOUT", 0)
+    monkeypatch.setattr(sessions_mod, "_PAUSE_DURATION", 0)
+    monkeypatch.setattr(sessions_mod, "_POLL_INTERVAL", 0)
+
+    sleep_calls = []
+    original_sleep = asyncio.sleep
+
+    async def tracking_sleep(seconds):
+        sleep_calls.append(seconds)
+        await original_sleep(0)  # always instant
+
+    monkeypatch.setattr(asyncio, "sleep", tracking_sleep)
+
+    session_id = str(_uuid.uuid4())
+    queue = asyncio.Queue()
+    _sessions[session_id] = {
+        "queue": queue, "task": None,
+        "postal_code": "H9K 1P9", "service_type": "Consultation urgente",
+        "user_email": None, "notify": False,
+    }
+    task = asyncio.create_task(_poll(session_id))
+    # Let it run 2 full cycles (pause + resume); use original_sleep so the
+    # wait itself is not captured in sleep_calls (which tracks _poll's calls).
+    await original_sleep(0.2)
+    _sessions.pop(session_id, None)
+    task.cancel()
+    try:
+        await task
+    except asyncio.CancelledError:
+        pass
+
+    # The PAUSE_DURATION sleep must have been called
+    assert 0 in sleep_calls, f"Expected _PAUSE_DURATION sleep call, got: {sleep_calls}"
+
+    # After the pause, polling must have resumed — at least 2 clinics events in queue
+    events = []
+    while not queue.empty():
+        events.append(await queue.get())
+    clinics_events = [e for e in events if e.get("type") == "clinics"]
+    paused_events = [e for e in events if e.get("type") == "paused"]
+    assert len(paused_events) >= 1, "Expected at least one paused event"
+    assert len(clinics_events) >= 2, f"Expected clinics events before and after pause, got {len(clinics_events)}"
