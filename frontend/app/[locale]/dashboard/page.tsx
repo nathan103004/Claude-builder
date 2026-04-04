@@ -21,6 +21,50 @@ interface ClinicCard {
   slots: Slot[];
 }
 
+// ---------------------------------------------------------------------------
+// Demo data — embedded so demo mode works without a running backend
+// ---------------------------------------------------------------------------
+function makeDemoClinics(): ClinicCard[] {
+  const today = new Date();
+  function daysAhead(n: number) {
+    const d = new Date(today);
+    d.setDate(d.getDate() + n);
+    return d.toISOString().slice(0, 10);
+  }
+  return [
+    {
+      clinic_name: 'Clinique médicale Côte-des-Neiges (DÉMO)',
+      address: '5700 Chemin de la Côte-des-Neiges, Montréal, QC H3T 2A8',
+      slots: [
+        { date: daysAhead(1), time: '09:00', slot_id: 'demo-001' },
+        { date: daysAhead(2), time: '11:30', slot_id: 'demo-001' },
+        { date: daysAhead(3), time: '14:00', slot_id: 'demo-001' },
+      ],
+    },
+    {
+      clinic_name: 'Clinique Plateau-Mont-Royal (DÉMO)',
+      address: '4235 Avenue du Parc, Montréal, QC H2W 2H2',
+      slots: [
+        { date: daysAhead(1), time: '10:00', slot_id: 'demo-002' },
+        { date: daysAhead(4), time: '15:30', slot_id: 'demo-002' },
+      ],
+    },
+    {
+      clinic_name: 'GMF-Réseau Rosemont (DÉMO)',
+      address: '2924 Rue Beaubien E, Montréal, QC H1Y 1G2',
+      slots: [
+        { date: daysAhead(2), time: '08:30', slot_id: 'demo-003' },
+      ],
+    },
+  ];
+}
+
+function fakeRef() {
+  return Array.from({ length: 12 }, () => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'[Math.floor(Math.random() * 36)]).join('');
+}
+
+// ---------------------------------------------------------------------------
+
 export default function DashboardPage({ params: { locale } }: { params: { locale: string } }) {
   const t = useTranslations('dashboard');
   const { postalCode, ramq } = useOnboarding();
@@ -84,24 +128,13 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
     setBookingSlotId(slot.slot_id);
     try {
       if (isDemo) {
-        // Demo mode: hit the demo booking endpoint — no Selenium, no credentials
-        const res = await fetch('/api/demo/book', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            slot_id: slot.slot_id,
-            clinic_name: clinic.clinic_name,
-            slot_date: slot.date,
-            slot_time: slot.time,
-          }),
-        });
-        if (!res.ok) { setBookError(t('book_error_failed')); return; }
-        const result = await res.json();
+        // Demo mode: generate confirmation locally — no backend needed
+        await new Promise(r => setTimeout(r, 600)); // simulate network delay
         setBooking({
-          confirmationNumber: result.confirmation_number,
-          clinicName: result.clinic_name,
-          slotDate: result.slot_date,
-          slotTime: result.slot_time,
+          confirmationNumber: fakeRef(),
+          clinicName: clinic.clinic_name,
+          slotDate: slot.date,
+          slotTime: slot.time,
         });
         return;
       }
@@ -145,21 +178,15 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
     if (hasNew) showToast(t('new_slot'));
   }
 
-  // Demo mode: load static clinic data once, no SSE
+  // Demo mode: load embedded clinic data immediately — no backend needed
   useEffect(() => {
     if (!isDemo) return;
-    fetch('/api/demo/clinics')
-      .then(r => r.json())
-      .then(data => {
-        if (Array.isArray(data.clinics)) {
-          setClinics(data.clinics);
-          prevSlotKeysRef.current = new Set(
-            data.clinics.flatMap((c: ClinicCard) => c.slots.map((s: Slot) => buildSlotKey(c.clinic_name, s)))
-          );
-        }
-        setLoading(false);
-      })
-      .catch(() => { setConnError(true); setLoading(false); });
+    const data = makeDemoClinics();
+    setClinics(data);
+    prevSlotKeysRef.current = new Set(
+      data.flatMap(c => c.slots.map(s => buildSlotKey(c.clinic_name, s)))
+    );
+    setLoading(false);
   }, [isDemo]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Live mode: SSE session
