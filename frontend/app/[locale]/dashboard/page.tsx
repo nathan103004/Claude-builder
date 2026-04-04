@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useOnboarding } from '@/context/OnboardingContext';
+import ServiceTypeSelector, { RvsqServiceType } from '@/components/dashboard/ServiceTypeSelector';
+import EmergencyPrompt from '@/components/dashboard/EmergencyPrompt';
 
 interface Slot {
   date: string;
@@ -17,8 +19,10 @@ interface ClinicCard {
 
 export default function DashboardPage({ params: { locale } }: { params: { locale: string } }) {
   const t = useTranslations('dashboard');
-  const { postalCode } = useOnboarding();
+  const { postalCode, ramq } = useOnboarding();
 
+  const [serviceType, setServiceType] = useState<RvsqServiceType>('consultation_urgente');
+  const [showEmergency, setShowEmergency] = useState(false);
   const [clinics, setClinics] = useState<ClinicCard[]>([]);
   const [loading, setLoading] = useState(true);
   const [connError, setConnError] = useState(false);
@@ -110,6 +114,23 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
     <main className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-2xl font-bold mb-6">{t('title')}</h1>
+
+        {showEmergency ? (
+          <EmergencyPrompt
+            prefillName={ramq?.prenom ?? ''}
+            prefillRamq={ramq?.numero ?? ''}
+            onBack={() => setShowEmergency(false)}
+          />
+        ) : (
+          <>
+            <ServiceTypeSelector
+              selectedServiceType={serviceType}
+              onServiceTypeChange={setServiceType}
+              onEmergencySelect={() => setShowEmergency(true)}
+            />
+            {/* TODO: ClinicCards component goes here (teammate #18) */}
+          </>
+        )}
 
         {/* Toast */}
         {toast && (

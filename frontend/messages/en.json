@@ -66,6 +66,36 @@
     "connection_lost": "Connection lost. Retrying...",
     "searching_again": "Updating in",
     "minutes": "min",
-    "paused": "No appointments found. Checking again in 1 hour."
+    "paused": "No appointments found. Checking again in 1 hour.",
+    "serviceType": {
+      "heading": "What kind of appointment do you need?",
+      "consultation_urgente": "Urgent consultation",
+      "consultation_urgente_desc": "Need care today",
+      "consultation_semi_urgente": "Semi-urgent consultation",
+      "consultation_semi_urgente_desc": "Need care within 1–2 days",
+      "suivi": "Follow-up",
+      "suivi_desc": "Non-urgent check-in with a doctor",
+      "suivi_pediatrique": "Pediatric follow-up",
+      "suivi_pediatrique_desc": "Follow-up for a child",
+      "suivi_grossesse": "Pregnancy follow-up",
+      "suivi_grossesse_desc": "Prenatal care visit",
+      "emergency": "Emergency",
+      "emergency_desc": "Life-threatening — call 911"
+    },
+    "emergency": {
+      "heading": "Call 911 now",
+      "subheading": "This is a life-threatening emergency. Do not wait.",
+      "script_heading": "Dispatcher script",
+      "script_intro": "When the dispatcher answers, say:",
+      "label_name": "Your name",
+      "label_location": "Your location",
+      "label_ramq": "Health insurance number",
+      "placeholder_name": "Enter your full name",
+      "placeholder_location": "Enter your full address or location",
+      "placeholder_ramq": "Enter your RAMQ number",
+      "back": "← Back to appointment types",
+      "call_button": "Call 911",
+      "disclaimer": "SantéNav cannot contact emergency services on your behalf. Call 911 directly."
+    }
   }
 }
