@@ -67,18 +67,9 @@ def main():
         input("Press ENTER to fill the form and search...")
 
         # --- Step 3: fill form ---
-        step("Filling postal code...")
-        el.clear(); el.send_keys("H2X 1Y4")
-
-        step("Setting radius...")
+        # Date and postal code are pre-filled by the portal — only set radius and service type
+        step("Setting radius to 50 km...")
         Select(driver.find_element(By.ID, "perimeterCombo")).select_by_visible_text("50 km")
-
-        step("Setting date...")
-        date_el = driver.find_element(By.ID, "DateRangeStart")
-        date_el.clear()
-        date_el.send_keys("05-04-2026")
-        date_el.send_keys(Keys.ESCAPE)
-        print(f"  Date value after entry: {repr(date_el.get_attribute('value'))}")
 
         step("Setting service type...")
         Select(driver.find_element(By.ID, "consultingReason")).select_by_visible_text("Consultation urgente")

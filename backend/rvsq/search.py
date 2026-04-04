@@ -41,7 +41,7 @@ def _fill_postal_code(driver, code_postal):
     el = WebDriverWait(driver, WAIT_TIMEOUT).until(
         EC.presence_of_element_located((By.ID, POSTAL_CODE_ID))
     )
-    el.clear()
+    driver.execute_script("arguments[0].value = '';", el)
     el.send_keys(code_postal)
 
 
@@ -58,9 +58,8 @@ def _set_date(driver, date_debut):
         formatted_date = f"{parts[2]}-{parts[1]}-{parts[0]}"
     else:
         formatted_date = date_debut
-    el.clear()
-    el.send_keys(formatted_date)
-    el.send_keys(Keys.ESCAPE)  # close flatpickr calendar so it doesn't cover the search button
+    # flatpickr marks the input as read-only — use JS to set the value directly
+    driver.execute_script("arguments[0].value = arguments[1];", el, formatted_date)
 
 
 def _set_moments(driver, moments):
