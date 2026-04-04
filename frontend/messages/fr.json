@@ -77,6 +77,7 @@
     "searching_again": "Mise à jour dans",
     "minutes": "min",
     "paused": "Aucun rendez-vous trouvé. Nouvelle vérification dans 1 heure.",
+    "ramq_required": "Veuillez entrer vos informations de carte d'assurance maladie pour rechercher des rendez-vous.",
     "book_error_no_session": "Veuillez fournir vos informations de carte d'assurance maladie pour réserver.",
     "book_error_slot_taken": "Ce créneau vient d'être pris. Veuillez en choisir un autre.",
     "book_error_session_expired": "Votre session a expiré. Veuillez réessayer.",

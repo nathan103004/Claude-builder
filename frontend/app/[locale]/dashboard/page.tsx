@@ -195,13 +195,24 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
     let cancelled = false;
 
     async function startSession() {
+      if (!ramq) {
+        setLoading(false);
+        return;
+      }
       try {
         const res = await fetch('/api/sessions', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             postal_code: postalCode || 'H9K 1P9',
-            service_type: 'Consultation urgente',
+            service_type: 'consultation_urgente',
+            prenom: ramq.prenom,
+            nom: ramq.nom,
+            numero_assurance_maladie: ramq.numero,
+            numero_sequentiel: ramq.sequentiel,
+            date_naissance_jour: ramq.dob_day,
+            date_naissance_mois: ramq.dob_month,
+            date_naissance_annee: ramq.dob_year,
           }),
         });
         if (!res.ok || cancelled) return;
@@ -244,7 +255,7 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
         fetch(`/api/rvsq/session/${rvsqSessionIdRef.current}`, { method: 'DELETE' }).catch(() => {});
       }
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [ramq]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <main id="main-content" className="min-h-screen bg-blue-50 p-6">
@@ -337,8 +348,13 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
           </div>
         )}
 
+        {/* No RAMQ */}
+        {!ramq && !loading && (
+          <p className="text-center text-gray-500 py-12">{t('ramq_required')}</p>
+        )}
+
         {/* No results */}
-        {!loading && clinics.length === 0 && !connError && (
+        {ramq && !loading && clinics.length === 0 && !connError && (
           <p className="text-center text-gray-500 py-12">{t('no_results')}</p>
         )}
 
