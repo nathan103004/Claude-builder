@@ -41,14 +41,19 @@ def main():
             moments=["avant-midi", "apres-midi", "soir"],
         )
 
-        print("\nStep 1 — navigating to search form...")
-        from selenium.webdriver.support.ui import WebDriverWait
-        from selenium.webdriver.support import expected_conditions as EC
+        print(f"\nCurrent URL : {driver.current_url}")
+        print(f"Page title  : {driver.title}")
+
         from selenium.webdriver.common.by import By
-        WebDriverWait(driver, 30).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, 'a[href="#criteres_t1"]'))
-        ).click()
-        input("Search form should be visible. Press ENTER to fill it and search...")
+        links = driver.find_elements(By.TAG_NAME, "a")
+        print(f"\nAll <a> hrefs on this page ({len(links)} total):")
+        for a in links:
+            href = a.get_attribute("href") or ""
+            text = a.text.strip()
+            if href or text:
+                print(f"  [{text[:40]}]  href={href[:80]}")
+
+        input("\nCheck the list above, then press ENTER to run search_clinics()...")
 
         result = search_clinics(driver, params)
 
