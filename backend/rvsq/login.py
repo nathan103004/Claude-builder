@@ -42,7 +42,7 @@ WAIT_TIMEOUT = 15
 
 def _wait_for_form(driver: webdriver.Chrome) -> None:
     WebDriverWait(driver, WAIT_TIMEOUT).until(
-        EC.presence_of_element_located((By.ID, LOGIN_PRENOM_ID))
+        EC.element_to_be_clickable((By.ID, LOGIN_PRENOM_ID))
     )
 
 
@@ -102,8 +102,10 @@ def login_rvsq(driver: webdriver.Chrome, credentials: RAMQCredentials) -> None |
             credentials.date_naissance_annee,
         ]
         for field_id, value in zip(FIELD_ORDER, field_values):
-            el = driver.find_element(By.ID, field_id)
-            el.clear()
+            el = WebDriverWait(driver, WAIT_TIMEOUT).until(
+                EC.element_to_be_clickable((By.ID, field_id))
+            )
+            driver.execute_script("arguments[0].value = '';", el)
             el.send_keys(value)
 
         # Month is a <select> — select by French month name
