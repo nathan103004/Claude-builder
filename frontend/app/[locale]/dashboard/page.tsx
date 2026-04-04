@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useOnboarding } from '@/context/OnboardingContext';
 import ServiceTypeSelector, { RvsqServiceType } from '@/components/dashboard/ServiceTypeSelector';
@@ -23,6 +24,8 @@ interface ClinicCard {
 export default function DashboardPage({ params: { locale } }: { params: { locale: string } }) {
   const t = useTranslations('dashboard');
   const { postalCode, ramq } = useOnboarding();
+  const searchParams = useSearchParams();
+  const isDemo = searchParams.get('demo') === 'true';
 
   const [serviceType, setServiceType] = useState<RvsqServiceType>('consultation_urgente');
   const [showEmergency, setShowEmergency] = useState(false);
@@ -80,6 +83,29 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
     setBookError(null);
     setBookingSlotId(slot.slot_id);
     try {
+      if (isDemo) {
+        // Demo mode: hit the demo booking endpoint — no Selenium, no credentials
+        const res = await fetch('/api/demo/book', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            slot_id: slot.slot_id,
+            clinic_name: clinic.clinic_name,
+            slot_date: slot.date,
+            slot_time: slot.time,
+          }),
+        });
+        if (!res.ok) { setBookError(t('book_error_failed')); return; }
+        const result = await res.json();
+        setBooking({
+          confirmationNumber: result.confirmation_number,
+          clinicName: result.clinic_name,
+          slotDate: result.slot_date,
+          slotTime: result.slot_time,
+        });
+        return;
+      }
+
       const rvsqSessionId = await ensureRvsqSession();
       if (!rvsqSessionId) {
         setBookError(t('book_error_no_session'));
@@ -90,19 +116,13 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ session_id: rvsqSessionId, slot_id: slot.slot_id }),
       });
-      if (res.status === 409) {
-        setBookError(t('book_error_slot_taken'));
-        return;
-      }
+      if (res.status === 409) { setBookError(t('book_error_slot_taken')); return; }
       if (res.status === 401) {
         rvsqSessionIdRef.current = null;
         setBookError(t('book_error_session_expired'));
         return;
       }
-      if (!res.ok) {
-        setBookError(t('book_error_failed'));
-        return;
-      }
+      if (!res.ok) { setBookError(t('book_error_failed')); return; }
       const result = await res.json();
       setBooking({
         confirmationNumber: result.confirmation_number,
@@ -125,7 +145,26 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
     if (hasNew) showToast(t('new_slot'));
   }
 
+  // Demo mode: load static clinic data once, no SSE
   useEffect(() => {
+    if (!isDemo) return;
+    fetch('/api/demo/clinics')
+      .then(r => r.json())
+      .then(data => {
+        if (Array.isArray(data.clinics)) {
+          setClinics(data.clinics);
+          prevSlotKeysRef.current = new Set(
+            data.clinics.flatMap((c: ClinicCard) => c.slots.map((s: Slot) => buildSlotKey(c.clinic_name, s)))
+          );
+        }
+        setLoading(false);
+      })
+      .catch(() => { setConnError(true); setLoading(false); });
+  }, [isDemo]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Live mode: SSE session
+  useEffect(() => {
+    if (isDemo) return;
     let cancelled = false;
 
     async function startSession() {
@@ -159,18 +198,10 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
           } catch {}
         });
 
-        es.addEventListener('paused', () => {
-          if (!cancelled) setPaused(true);
-        });
-
-        es.addEventListener('error', () => {
-          if (!cancelled) setConnError(true);
-        });
+        es.addEventListener('paused', () => { if (!cancelled) setPaused(true); });
+        es.addEventListener('error', () => { if (!cancelled) setConnError(true); });
       } catch {
-        if (!cancelled) {
-          setLoading(false);
-          setConnError(true);
-        }
+        if (!cancelled) { setLoading(false); setConnError(true); }
       }
     }
 
@@ -191,6 +222,18 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
   return (
     <main id="main-content" className="min-h-screen bg-blue-50 p-6">
       <div className="max-w-2xl mx-auto">
+
+        {/* Demo banner */}
+        {isDemo && (
+          <div
+            role="status"
+            className="mb-4 flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-800"
+          >
+            <span className="font-semibold">{t('demo_badge')}</span>
+            <span>{t('demo_notice')}</span>
+          </div>
+        )}
+
         <h1 className="text-2xl font-bold mb-6">{t('title')}</h1>
 
         {booking ? (

@@ -19,6 +19,12 @@ export default function Home({ params: { locale } }: { params: { locale: string 
       >
         {t('get_started')}
       </Link>
+      <Link
+        href={`/${locale}/dashboard?demo=true`}
+        className="text-sm text-blue-600 hover:text-blue-800 underline"
+      >
+        {t('try_demo')}
+      </Link>
       <Link href={`/${otherLocale}`} className="text-sm underline text-blue-600 hover:text-blue-800">
         {t('language_toggle')}
       </Link>

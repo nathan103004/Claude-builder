@@ -3,7 +3,8 @@
     "title": "SantéNav",
     "subtitle": "Trouvez la bonne clinique rapidement.",
     "language_toggle": "English",
-    "get_started": "Commencer"
+    "get_started": "Commencer",
+    "try_demo": "Essayer la démo (sans connexion)"
   },
   "onboarding": {
     "language": {
@@ -64,6 +65,8 @@
   },
   "dashboard": {
     "title": "Rendez-vous disponibles",
+    "demo_badge": "Mode démo",
+    "demo_notice": "Ces cliniques sont fictives. Aucune réservation réelle n'est effectuée.",
     "loading": "Recherche de cliniques en cours...",
     "no_results": "Aucune clinique trouvée. Nous continuons la recherche.",
     "book": "Réserver",

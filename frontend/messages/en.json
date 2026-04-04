@@ -3,7 +3,8 @@
     "title": "SantéNav",
     "subtitle": "Find the right clinic, fast.",
     "language_toggle": "Français",
-    "get_started": "Get started"
+    "get_started": "Get started",
+    "try_demo": "Try demo (no login needed)"
   },
   "onboarding": {
     "language": {
@@ -64,6 +65,8 @@
   },
   "dashboard": {
     "title": "Available appointments",
+    "demo_badge": "Demo mode",
+    "demo_notice": "These are fake clinics. No real booking is made.",
     "loading": "Searching for clinics...",
     "no_results": "No clinics found. We'll keep searching.",
     "book": "Book",

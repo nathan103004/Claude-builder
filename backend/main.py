@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from routers import auth, ocr, sessions, rvsq_router
 from routers.chat import router as chat_router
+from routers.demo_router import router as demo_router
 
 load_dotenv()
 
@@ -25,6 +26,7 @@ app.include_router(ocr.router)
 app.include_router(sessions.router)
 app.include_router(rvsq_router.router, prefix="/rvsq")
 app.include_router(chat_router)
+app.include_router(demo_router, prefix="/demo")
 
 
 @app.get("/health")
