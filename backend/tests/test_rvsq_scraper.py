@@ -56,17 +56,24 @@ def test_parse_slot_fields_populated():
             assert slot.slot_id != ""
 
 
-def test_parse_handles_card_with_no_slots():
+def test_parse_handles_card_with_no_startdate():
     from rvsq.scraper import parse_clinic_cards_from_html
+    # Card with no data-startdate attribute → slots list is empty
     html = """<html><body>
-      <div class="rvsq-clinic-card">
-        <span class="clinic-name">Clinique Test</span>
-        <span class="clinic-address">123 rue Test</span>
-      </div>
+      <ul class="ClinicList h-ClinicList">
+        <li>
+          <a class="h-selectClinic" href="javascript:;" data-companyid="999">
+            <div class="tmbWrapper" style="float:left">
+              <h2 class="remove-margin clinic-title">Clinique Test</h2>
+              <p>123 rue Test, Montréal</p>
+            </div>
+          </a>
+        </li>
+      </ul>
     </body></html>"""
     result = parse_clinic_cards_from_html(html)
-    if isinstance(result, list) and len(result) > 0:
-        assert result[0].slots == []
+    assert isinstance(result, list) and len(result) == 1
+    assert result[0].slots == []
 
 
 def test_parse_clinic_cards_uses_page_source():
