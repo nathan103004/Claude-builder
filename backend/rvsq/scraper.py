@@ -24,10 +24,7 @@ NAME_CSS        = "h2.clinic-title"            # clinic name inside the card
 ADDRESS_CSS     = ".tmbWrapper p"              # first <p> inside the float:left tmbWrapper
 NO_RESULTS_CSS  = "#clinicsWithNoDisponibilitiesContainer"  # confirmed via inspect_rvsq.py
 
-# Slot calendar page selectors — TODO: inspect when a slot is available
-# After clicking a clinic (a.h-selectClinic), the portal navigates to #selection-heure_t3.
-# Individual time slot buttons have not been observed yet (no availability during inspection).
-SLOT_BUTTON_CSS = "REPLACE_AFTER_SLOT_INSPECTION"  # e.g. button.h-SlotButton or similar
+SLOT_BUTTON_CSS = "button.h-TimeButton"  # confirmed from live RVSQ DOM inspection
 
 
 def parse_clinic_cards_from_html(html: str) -> list[ClinicCard] | RVSQError:
