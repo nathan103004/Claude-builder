@@ -6,6 +6,7 @@ import { useOnboarding } from '@/context/OnboardingContext';
 import ServiceTypeSelector, { RvsqServiceType } from '@/components/dashboard/ServiceTypeSelector';
 import EmergencyPrompt from '@/components/dashboard/EmergencyPrompt';
 import ChatPanel from '@/components/dashboard/ChatPanel';
+import BookingConfirmation from '@/components/dashboard/BookingConfirmation';
 
 interface Slot {
   date: string;
@@ -24,6 +25,12 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
 
   const [serviceType, setServiceType] = useState<RvsqServiceType>('consultation_urgente');
   const [showEmergency, setShowEmergency] = useState(false);
+  const [booking, setBooking] = useState<{
+    confirmationNumber: string;
+    clinicName: string;
+    slotDate: string;
+    slotTime: string;
+  } | null>(null);
   const [clinics, setClinics] = useState<ClinicCard[]>([]);
   const [loading, setLoading] = useState(true);
   const [connError, setConnError] = useState(false);
@@ -116,7 +123,16 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
       <div className="max-w-2xl mx-auto">
         <h1 className="text-2xl font-bold mb-6">{t('title')}</h1>
 
-        {showEmergency ? (
+        {booking ? (
+          <BookingConfirmation
+            confirmationNumber={booking.confirmationNumber}
+            serviceType={serviceType}
+            clinicName={booking.clinicName}
+            slotDate={booking.slotDate}
+            slotTime={booking.slotTime}
+            onDismiss={() => setBooking(null)}
+          />
+        ) : showEmergency ? (
           <EmergencyPrompt
             prefillName={ramq?.prenom ?? ''}
             prefillRamq={ramq?.numero ?? ''}
@@ -195,10 +211,14 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
                     </span>
                     <button
                       type="button"
-                      disabled
-                      title={t('book_soon')}
                       aria-label={`${t('book')} — ${slot.date} ${slot.time} — ${clinic.clinic_name}`}
-                      className="text-xs bg-blue-600 text-white rounded-lg px-3 py-1 disabled:opacity-40 cursor-not-allowed focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
+                      onClick={() => setBooking({
+                        confirmationNumber: 'PENDING',
+                        clinicName: clinic.clinic_name,
+                        slotDate: slot.date,
+                        slotTime: slot.time,
+                      })}
+                      className="text-xs bg-blue-600 text-white rounded-lg px-3 py-1 hover:bg-blue-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
                     >
                       {t('book')}
                     </button>
