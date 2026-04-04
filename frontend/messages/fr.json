@@ -105,6 +105,19 @@
       "disclaimer": "SantéNav ne peut pas contacter les services d'urgence en votre nom. Appelez le 911 directement."
     }
   },
+  "booking": {
+    "confirmed": "Rendez-vous confirmé",
+    "confirmation_number": "Numéro de confirmation",
+    "instructions_heading": "Avant votre rendez-vous",
+    "dismiss": "Retour au tableau de bord",
+    "instructions": {
+      "consultation_urgente": "Apportez votre carte d'assurance maladie et la liste de vos médicaments actuels. Arrivez 10 minutes à l'avance. Ne mangez pas et ne buvez pas avant d'arriver si vous n'êtes pas sûr qu'un jeûne est requis.",
+      "consultation_semi_urgente": "Apportez votre carte d'assurance maladie et la liste de vos médicaments actuels. Arrivez 10 minutes à l'avance.",
+      "suivi": "Apportez votre carte d'assurance maladie et tout résultat de test récent ou lettre de référence. Arrivez 5 minutes à l'avance.",
+      "suivi_pediatrique": "Apportez la carte d'assurance maladie de l'enfant et son carnet de vaccination. Arrivez 10 minutes à l'avance.",
+      "suivi_grossesse": "Apportez votre carte d'assurance maladie et votre carnet de maternité si vous en avez un. Arrivez 10 minutes à l'avance."
+    }
+  },
   "chatbot": {
     "trigger": "Pas sûr où aller ?",
     "heading": "Assistant santé",

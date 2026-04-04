@@ -105,6 +105,19 @@
       "disclaimer": "SantéNav cannot contact emergency services on your behalf. Call 911 directly."
     }
   },
+  "booking": {
+    "confirmed": "Appointment confirmed",
+    "confirmation_number": "Confirmation number",
+    "instructions_heading": "Before your appointment",
+    "dismiss": "Back to dashboard",
+    "instructions": {
+      "consultation_urgente": "Bring your RAMQ card and a list of your current medications. Arrive 10 minutes early. Do not eat or drink before arrival if you are unsure whether fasting is required.",
+      "consultation_semi_urgente": "Bring your RAMQ card and a list of your current medications. Arrive 10 minutes early.",
+      "suivi": "Bring your RAMQ card and any recent test results or referral letters. Arrive 5 minutes early.",
+      "suivi_pediatrique": "Bring the child's RAMQ card and vaccination record. Arrive 10 minutes early.",
+      "suivi_grossesse": "Bring your RAMQ card and your pregnancy booklet (carnet de maternité) if you have one. Arrive 10 minutes early."
+    }
+  },
   "chatbot": {
     "trigger": "Not sure where to go?",
     "heading": "Health assistant",
