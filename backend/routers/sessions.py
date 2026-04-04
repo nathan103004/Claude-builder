@@ -65,7 +65,10 @@ def _real_rvsq_search(rvsq_session_id: str, postal_code: str, service_type: str)
     )
     result = search_clinics(entry["driver"], params)
     if isinstance(result, RVSQError):
-        raise RuntimeError(result.message)
+        if result.code == "TIMEOUT":
+            # Page took too long — not a hard failure, polling loop will retry
+            return []
+        raise RuntimeError(f"{result.code}: {result.message}")
     return [dataclasses.asdict(c) for c in result]
 
 

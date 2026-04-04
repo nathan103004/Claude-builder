@@ -7,10 +7,9 @@ Usage:
     source .venv/bin/activate
     python debug_search.py
 """
-import sys
 import time
 import undetected_chromedriver as uc
-from models.rvsq_models import SearchParams
+from models.rvsq_models import SearchParams, RVSQError
 from rvsq.search import search_clinics
 
 
@@ -41,31 +40,38 @@ def main():
             moments=["avant-midi", "apres-midi", "soir"],
         )
 
-        print(f"\nCurrent URL : {driver.current_url}")
-        print(f"Page title  : {driver.title}")
+        attempt = 0
+        while True:
+            attempt += 1
+            print(f"\n--- Attempt {attempt} ---")
+            print(f"URL: {driver.current_url}")
 
-        from selenium.webdriver.common.by import By
-        links = driver.find_elements(By.TAG_NAME, "a")
-        print(f"\nAll <a> hrefs on this page ({len(links)} total):")
-        for a in links:
-            href = a.get_attribute("href") or ""
-            text = a.text.strip()
-            if href or text:
-                print(f"  [{text[:40]}]  href={href[:80]}")
+            result = search_clinics(driver, params)
 
-        input("\nCheck the list above, then press ENTER to run search_clinics()...")
+            if isinstance(result, list) and len(result) > 0:
+                print(f"Found {len(result)} clinic(s)!")
+                for c in result[:5]:
+                    print(f"  {c.clinic_name}  ({len(c.slots)} slot(s))")
+                    for s in c.slots[:2]:
+                        print(f"    {s.date} {s.time}  slot_id={s.slot_id}")
+                break
 
-        result = search_clinics(driver, params)
+            elif isinstance(result, list) and len(result) == 0:
+                print("No clinics found this attempt. Retrying in 5s...")
 
-        print("\n--- RESULT ---")
-        if isinstance(result, list):
-            print(f"Found {len(result)} clinic(s).")
-            for c in result[:5]:
-                print(f"  {c.clinic_name}  ({len(c.slots)} slot(s))")
-                for s in c.slots[:2]:
-                    print(f"    {s.date} {s.time}  slot_id={s.slot_id}")
-        else:
-            print(f"ERROR {result.code}: {result.message}")
+            elif isinstance(result, RVSQError):
+                # Take a screenshot so we can see the page state
+                screenshot_path = f"/tmp/rvsq_debug_attempt{attempt}.png"
+                driver.save_screenshot(screenshot_path)
+                print(f"ERROR {result.code}: {result.message}")
+                print(f"Screenshot saved → {screenshot_path}")
+                print(f"Current URL: {driver.current_url}")
+                print(f"Page title : {driver.title}")
+                retry = input("Press ENTER to retry, or type 'q' to quit: ").strip()
+                if retry.lower() == "q":
+                    break
+
+            time.sleep(5)
 
         input("\nPress ENTER to close the browser...")
     finally:
