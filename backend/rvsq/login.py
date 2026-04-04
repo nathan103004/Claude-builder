@@ -22,8 +22,8 @@ LOGIN_CONSENT_ID     = "AssureForm_CSTMT"
 LOGIN_SUBMIT_ID      = "ctl00_ContentPlaceHolderMP_myButton"
 # Multiple possible error divs — any .alert element on the login page is an error
 LOGIN_ERROR_SELECTOR = ".alert.ErrorMessage_ServicesAccessDenied, .alert.ErrorMessage_CaptchaInvalid, .alert.ErrorMessage_FillAllFields, .alert.ErrorMessage_InvalideDateformat"
-# TODO: run inspect_rvsq.py after login to capture post-login selectors
-POST_LOGIN_SELECTOR  = "REPLACE_WITH_REAL_CSS_SELECTOR"
+# Present on Recherche.aspx after successful login (search button id confirmed via inspect_rvsq.py)
+POST_LOGIN_SELECTOR  = "#searchbutton"
 
 # Text fields filled via send_keys (excludes month which is a <select>)
 FIELD_ORDER = [

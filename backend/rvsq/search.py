@@ -8,20 +8,23 @@ from selenium.common.exceptions import TimeoutException, WebDriverException
 from models.rvsq_models import SearchParams, ClinicCard, RVSQError, SERVICE_TYPE_MAP
 from rvsq.scraper import parse_clinic_cards
 
-# --- Selectors (update from DevTools inspection of RVSQ portal) ---
-SEARCH_NAV_SELECTOR    = "REPLACE"
-POSTAL_CODE_ID         = "REPLACE"
-RADIUS_SELECT_ID       = "REPLACE"
-DATE_ID                = "REPLACE"
-SERVICE_TYPE_SELECT_ID = "REPLACE"
-SEARCH_BUTTON_ID       = "REPLACE"
-RESULTS_CONTAINER_CSS  = "REPLACE"
-NO_RESULTS_CSS         = "REPLACE"
+# --- Selectors (populated from rvsq_elements.json DOM inspection via inspect_rvsq.py) ---
+# Recherche.aspx uses hash fragments: #accueil (post-login landing) → #criteres_t1 (search form)
+SEARCH_NAV_SELECTOR    = 'a[href="#criteres_t1"]'
+POSTAL_CODE_ID         = "PostalCode"
+RADIUS_SELECT_ID       = "perimeterCombo"   # options text: "10 km"…"50 km"
+DATE_ID                = "DateRangeStart"   # flatpickr date input, format jj-mm-aaaa (DD-MM-YYYY)
+SERVICE_TYPE_SELECT_ID = "consultingReason" # options: "Consultation urgente", "Suivi", etc.
+SEARCH_BUTTON_ID       = "searchbutton"
+# #assure-next-btn (calendar navigation) is rendered only when results are present
+RESULTS_CONTAINER_CSS  = "#assure-next-btn"
+# Shown when zero clinics matched the search criteria
+NO_RESULTS_CSS         = "#clinicsWithNoDisponibilitiesContainer"
 
 MOMENTS = {
-    "avant-midi": "REPLACE_CHECKBOX_ID",
-    "apres-midi": "REPLACE_CHECKBOX_ID",
-    "soir":       "REPLACE_CHECKBOX_ID",
+    "avant-midi": "chkMatin",
+    "apres-midi": "chkPm",
+    "soir":       "chkSoir",
 }
 
 WAIT_TIMEOUT = 15
@@ -42,7 +45,8 @@ def _fill_postal_code(driver, code_postal):
 
 
 def _set_radius(driver, rayon_km):
-    Select(driver.find_element(By.ID, RADIUS_SELECT_ID)).select_by_value(str(rayon_km))
+    # Option visible text is "10 km", "20 km", etc. — use visible text, not value attribute
+    Select(driver.find_element(By.ID, RADIUS_SELECT_ID)).select_by_visible_text(f"{rayon_km} km")
 
 
 def _set_date(driver, date_debut):
@@ -78,6 +82,7 @@ def _wait_for_results(driver):
 
 
 def _assert_selectors_configured() -> None:
+    # All search form selectors are populated. No-op unless someone reverts to a placeholder.
     placeholders = {"REPLACE", "REPLACE_CHECKBOX_ID"}
     unconfigured = [
         name for name, val in [

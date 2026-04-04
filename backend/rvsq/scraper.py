@@ -4,16 +4,19 @@ from selenium import webdriver
 from models.rvsq_models import ClinicCard, TimeSlot, RVSQError
 
 # --- CSS selectors ---
-# NOTE: These match synthetic test fixtures. Update to real RVSQ portal selectors
-# after live DevTools inspection.
-CARD_CSS       = "div.rvsq-clinic-card"
-NAME_CSS       = "span.clinic-name"
-ADDRESS_CSS    = "span.clinic-address"
-SLOT_CSS       = "div.available-slot"
-SLOT_DATE_ATTR = "data-date"
-SLOT_TIME_ATTR = "data-time"
-SLOT_ID_ATTR   = "data-slot-id"
-NO_RESULTS_CSS = "div.no-results-message"
+# CARD_CSS and slot selectors are synthetic test placeholders.
+# To populate them: run inspect_rvsq.py, log in, run a search that RETURNS RESULTS,
+# press Enter, then inspect the search_results_page section of rvsq_elements.json
+# for the real clinic card container and slot button class/attribute names.
+# The no-results selector is confirmed from live inspection.
+CARD_CSS       = "div.rvsq-clinic-card"       # TODO: replace with real RVSQ class
+NAME_CSS       = "span.clinic-name"            # TODO: replace with real RVSQ class
+ADDRESS_CSS    = "span.clinic-address"         # TODO: replace with real RVSQ class
+SLOT_CSS       = "div.available-slot"          # TODO: replace with real RVSQ class
+SLOT_DATE_ATTR = "data-date"                   # TODO: confirm real attribute name
+SLOT_TIME_ATTR = "data-time"                   # TODO: confirm real attribute name
+SLOT_ID_ATTR   = "data-slot-id"               # TODO: confirm real attribute name
+NO_RESULTS_CSS = "#clinicsWithNoDisponibilitiesContainer"  # confirmed via inspect_rvsq.py
 
 
 def parse_clinic_cards_from_html(html: str) -> list[ClinicCard] | RVSQError:
