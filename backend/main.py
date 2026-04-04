@@ -27,10 +27,6 @@ async def health():
     return {"status": "ok"}
 
 
-from routers.rvsq_router import router as rvsq_router
-app.include_router(rvsq_router, prefix="/rvsq")
-
-
 @app.on_event("shutdown")
 def shutdown_cleanup():
     from rvsq.session_store import delete_all_sessions
