@@ -1,3 +1,10 @@
+"""RVSQ Selenium session store.
+
+Security: all credentials (RAMQCredentials) and WebDriver instances are held in
+RAM only — nothing is written to disk. Sessions expire after _TTL_SECONDS
+(30 min) of inactivity. All sessions are purged on app shutdown via
+delete_all_sessions().
+"""
 import threading
 import time
 import uuid
@@ -16,7 +23,7 @@ class _SessionEntry(TypedDict):
 
 _store: dict[str, _SessionEntry] = {}
 _lock = threading.Lock()
-_TTL_SECONDS = 1800  # 30 minutes
+_TTL_SECONDS = 1800  # 30-minute inactivity timeout — credentials are RAM-only, never persisted
 
 
 def create_session(credentials: RAMQCredentials) -> str:

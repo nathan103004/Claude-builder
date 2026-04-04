@@ -1,3 +1,9 @@
+"""RAMQ card OCR endpoint.
+
+Extracted fields (prenom, nom, numero, sequentiel, dob_*) are returned to the
+caller only. They are never written to disk, logged, or persisted. The
+temporary image file is always deleted in the finally block.
+"""
 import os
 import re
 import tempfile

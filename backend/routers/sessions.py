@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import asyncio
 import json
-import logging
 import uuid
 from datetime import date, timedelta
 from typing import AsyncIterator, Optional
@@ -12,7 +11,6 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
 router = APIRouter(prefix="/sessions", tags=["sessions"])
-_log = logging.getLogger(__name__)
 
 # Polling timing constants
 _POLL_INTERVAL = 5          # seconds between each search
