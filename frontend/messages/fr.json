@@ -73,6 +73,10 @@
     "searching_again": "Mise à jour dans",
     "minutes": "min",
     "paused": "Aucun rendez-vous trouvé. Nouvelle vérification dans 1 heure.",
+    "book_error_no_session": "Veuillez fournir vos informations de carte d'assurance maladie pour réserver.",
+    "book_error_slot_taken": "Ce créneau vient d'être pris. Veuillez en choisir un autre.",
+    "book_error_session_expired": "Votre session a expiré. Veuillez réessayer.",
+    "book_error_failed": "La réservation a échoué. Veuillez réessayer.",
     "serviceType": {
       "heading": "Quel type de rendez-vous souhaitez-vous ?",
       "consultation_urgente": "Consultation urgente",

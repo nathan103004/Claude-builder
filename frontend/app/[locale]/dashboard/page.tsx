@@ -11,6 +11,7 @@ import BookingConfirmation from '@/components/dashboard/BookingConfirmation';
 interface Slot {
   date: string;
   time: string;
+  slot_id: string;
 }
 
 interface ClinicCard {
@@ -36,9 +37,12 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
   const [connError, setConnError] = useState(false);
   const [paused, setPaused] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  const [bookingSlotId, setBookingSlotId] = useState<string | null>(null);
+  const [bookError, setBookError] = useState<string | null>(null);
 
   const prevSlotKeysRef = useRef<Set<string>>(new Set());
   const sessionIdRef = useRef<string | null>(null);
+  const rvsqSessionIdRef = useRef<string | null>(null);
   const esRef = useRef<EventSource | null>(null);
 
   function buildSlotKey(clinicName: string, slot: Slot) {
@@ -48,6 +52,69 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
   function showToast(msg: string) {
     setToast(msg);
     setTimeout(() => setToast(null), 4000);
+  }
+
+  async function ensureRvsqSession(): Promise<string | null> {
+    if (rvsqSessionIdRef.current) return rvsqSessionIdRef.current;
+    if (!ramq) return null;
+    const res = await fetch('/api/rvsq/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        prenom: ramq.prenom,
+        nom: ramq.nom,
+        numero_assurance_maladie: ramq.numero,
+        numero_sequentiel: ramq.sequentiel,
+        date_naissance_jour: ramq.dob_day,
+        date_naissance_mois: ramq.dob_month,
+        date_naissance_annee: ramq.dob_year,
+      }),
+    });
+    if (!res.ok) return null;
+    const { session_id } = await res.json();
+    rvsqSessionIdRef.current = session_id;
+    return session_id;
+  }
+
+  async function handleBook(clinic: ClinicCard, slot: Slot) {
+    setBookError(null);
+    setBookingSlotId(slot.slot_id);
+    try {
+      const rvsqSessionId = await ensureRvsqSession();
+      if (!rvsqSessionId) {
+        setBookError(t('book_error_no_session'));
+        return;
+      }
+      const res = await fetch('/api/rvsq/book', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: rvsqSessionId, slot_id: slot.slot_id }),
+      });
+      if (res.status === 409) {
+        setBookError(t('book_error_slot_taken'));
+        return;
+      }
+      if (res.status === 401) {
+        rvsqSessionIdRef.current = null;
+        setBookError(t('book_error_session_expired'));
+        return;
+      }
+      if (!res.ok) {
+        setBookError(t('book_error_failed'));
+        return;
+      }
+      const result = await res.json();
+      setBooking({
+        confirmationNumber: result.confirmation_number,
+        clinicName: clinic.clinic_name,
+        slotDate: slot.date,
+        slotTime: slot.time,
+      });
+    } catch {
+      setBookError(t('book_error_failed'));
+    } finally {
+      setBookingSlotId(null);
+    }
   }
 
   function detectNewSlots(next: ClinicCard[]) {
@@ -115,6 +182,9 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
       if (sessionIdRef.current) {
         fetch(`/api/sessions/${sessionIdRef.current}`, { method: 'DELETE' }).catch(() => {});
       }
+      if (rvsqSessionIdRef.current) {
+        fetch(`/api/rvsq/session/${rvsqSessionIdRef.current}`, { method: 'DELETE' }).catch(() => {});
+      }
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -181,6 +251,14 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
           </div>
         )}
 
+        {/* Booking error */}
+        {bookError && (
+          <div role="alert" className="bg-red-50 border border-red-200 text-red-800 rounded-xl px-4 py-3 mb-4 text-sm flex items-center justify-between">
+            <span>{bookError}</span>
+            <button type="button" onClick={() => setBookError(null)} className="ml-4 text-red-600 hover:text-red-800 font-medium text-xs">✕</button>
+          </div>
+        )}
+
         {/* Loading */}
         {loading && !connError && (
           <div className="flex flex-col items-center gap-3 py-16 text-gray-500">
@@ -212,15 +290,11 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
                     <button
                       type="button"
                       aria-label={`${t('book')} — ${slot.date} ${slot.time} — ${clinic.clinic_name}`}
-                      onClick={() => setBooking({
-                        confirmationNumber: 'PENDING',
-                        clinicName: clinic.clinic_name,
-                        slotDate: slot.date,
-                        slotTime: slot.time,
-                      })}
-                      className="text-xs bg-blue-600 text-white rounded-lg px-3 py-1 hover:bg-blue-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
+                      disabled={bookingSlotId !== null}
+                      onClick={() => handleBook(clinic, slot)}
+                      className="text-xs bg-blue-600 text-white rounded-lg px-3 py-1 hover:bg-blue-700 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {t('book')}
+                      {bookingSlotId === slot.slot_id ? '…' : t('book')}
                     </button>
                   </div>
                 ))}

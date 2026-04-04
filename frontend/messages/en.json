@@ -73,6 +73,10 @@
     "searching_again": "Updating in",
     "minutes": "min",
     "paused": "No appointments found. Checking again in 1 hour.",
+    "book_error_no_session": "Please provide your health insurance card information to book an appointment.",
+    "book_error_slot_taken": "This slot was just taken. Please choose another.",
+    "book_error_session_expired": "Your session expired. Please try again.",
+    "book_error_failed": "Booking failed. Please try again.",
     "serviceType": {
       "heading": "What kind of appointment do you need?",
       "consultation_urgente": "Urgent consultation",

@@ -30,16 +30,16 @@ def _stub_rvsq_search(postal_code: str, service_type: str) -> list[dict]:
             "clinic_name": "Clinique Saint-Laurent",
             "address": "1234 Boul. Saint-Laurent, Montréal, QC",
             "slots": [
-                {"date": (today + timedelta(days=1)).isoformat(), "time": "09:30"},
-                {"date": (today + timedelta(days=1)).isoformat(), "time": "14:00"},
-                {"date": (today + timedelta(days=2)).isoformat(), "time": "10:00"},
+                {"date": (today + timedelta(days=1)).isoformat(), "time": "09:30", "slot_id": "6676"},
+                {"date": (today + timedelta(days=1)).isoformat(), "time": "14:00", "slot_id": "6676"},
+                {"date": (today + timedelta(days=2)).isoformat(), "time": "10:00", "slot_id": "6676"},
             ],
         },
         {
             "clinic_name": "GMF-U Notre-Dame",
             "address": "1560 Rue Sherbrooke E, Montréal, QC",
             "slots": [
-                {"date": (today + timedelta(days=1)).isoformat(), "time": "08:00"},
+                {"date": (today + timedelta(days=1)).isoformat(), "time": "08:00", "slot_id": "1234"},
             ],
         },
     ]

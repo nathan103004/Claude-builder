@@ -40,6 +40,8 @@ class SearchRequest(BaseModel):
 class BookRequest(BaseModel):
     session_id: str
     slot_id: str
+    email: str = ""
+    phone: str = ""
 
 
 # --- Helpers ---
@@ -80,15 +82,15 @@ def _search_sync(session_id: str, params: SearchParams) -> list[ClinicCard] | RV
     return result
 
 
-def _book_sync(session_id: str, slot_id: str) -> BookingResult | RVSQError:
+def _book_sync(session_id: str, slot_id: str, email: str = "", phone: str = "") -> BookingResult | RVSQError:
     entry = session_store.get_session(session_id)
-    result = book_slot(entry["driver"], slot_id)
+    result = book_slot(entry["driver"], slot_id, email=email, phone=phone)
     if isinstance(result, RVSQError) and result.code == "SESSION_EXPIRED":
         reauth = session_store.reauth_session(session_id)
         if isinstance(reauth, RVSQError):
             return reauth
         entry = session_store.get_session(session_id)
-        result = book_slot(entry["driver"], slot_id)
+        result = book_slot(entry["driver"], slot_id, email=email, phone=phone)
     if not isinstance(result, RVSQError):
         session_store.touch_session(session_id)
     return result
@@ -126,7 +128,7 @@ async def book(body: BookRequest):
     entry = _get_valid_session(body.session_id)
     if not entry:
         raise HTTPException(status_code=404, detail="Session not found.")
-    result = await asyncio.to_thread(_book_sync, body.session_id, body.slot_id)
+    result = await asyncio.to_thread(_book_sync, body.session_id, body.slot_id, body.email, body.phone)
     _raise_if_error(result)
     return _to_dict(result)
 
