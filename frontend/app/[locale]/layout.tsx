@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { OnboardingProvider } from '@/context/OnboardingContext';
 import '../globals.css';
 
 export default async function LocaleLayout({
@@ -14,7 +15,9 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <OnboardingProvider>
+            {children}
+          </OnboardingProvider>
         </NextIntlClientProvider>
       </body>
     </html>
