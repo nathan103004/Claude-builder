@@ -6,6 +6,14 @@ from httpx import AsyncClient, ASGITransport
 from main import app
 
 
+@pytest.fixture(autouse=True)
+def clear_sessions():
+    from routers.sessions import _sessions
+    _sessions.clear()
+    yield
+    _sessions.clear()
+
+
 @pytest.mark.asyncio
 async def test_create_session_returns_id():
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
@@ -122,36 +130,18 @@ async def test_poll_uses_5s_interval(monkeypatch):
 
 @pytest.mark.asyncio
 async def test_poll_sends_paused_event_after_no_results(monkeypatch):
-    """After 10 minutes of no slots, _poll pushes a paused event."""
+    """After _NO_RESULTS_TIMEOUT seconds with no slots, _poll pushes a paused event."""
     import uuid as _uuid
     from routers import sessions as sessions_mod
     from routers.sessions import _sessions, _poll
 
-    # Stub returns clinics with NO slots
     def empty_search(postal_code, service_type):
         return [{"clinic_name": "Clinique Test", "address": "123 Rue Test", "slots": []}]
 
     monkeypatch.setattr(sessions_mod, "_stub_rvsq_search", empty_search)
-
-    # Make time advance fast: each 5s sleep counts as 601s worth of no-results time
-    no_results_elapsed = 0
-    original_sleep = asyncio.sleep
-
-    async def fast_sleep(seconds):
-        nonlocal no_results_elapsed
-        if seconds == 5:
-            no_results_elapsed += 601  # jump past the 600s threshold immediately
-        elif seconds >= 3600:
-            return  # skip the hour sleep
-        else:
-            await original_sleep(min(seconds, 0.01))
-
-    monkeypatch.setattr(asyncio, "sleep", fast_sleep)
-
-    # Patch the no_results tracking by directly manipulating the threshold
-    # Instead, just patch _NO_RESULTS_TIMEOUT to 0 so it triggers immediately
     monkeypatch.setattr(sessions_mod, "_NO_RESULTS_TIMEOUT", 0)
     monkeypatch.setattr(sessions_mod, "_PAUSE_DURATION", 0)
+    monkeypatch.setattr(sessions_mod, "_POLL_INTERVAL", 0.001)
 
     session_id = str(_uuid.uuid4())
     queue = asyncio.Queue()
@@ -161,7 +151,7 @@ async def test_poll_sends_paused_event_after_no_results(monkeypatch):
         "user_email": None, "notify": False,
     }
     task = asyncio.create_task(_poll(session_id))
-    await asyncio.sleep(0.3)
+    await asyncio.sleep(0.1)
     _sessions.pop(session_id, None)
     task.cancel()
     try:
@@ -169,7 +159,6 @@ async def test_poll_sends_paused_event_after_no_results(monkeypatch):
     except asyncio.CancelledError:
         pass
 
-    # Collect all queued events
     events = []
     while not queue.empty():
         events.append(await queue.get())
@@ -196,7 +185,7 @@ async def test_poll_resumes_after_pause(monkeypatch):
     # Trigger pause immediately, and skip the actual waits
     monkeypatch.setattr(sessions_mod, "_NO_RESULTS_TIMEOUT", 0)
     monkeypatch.setattr(sessions_mod, "_PAUSE_DURATION", 0)
-    monkeypatch.setattr(sessions_mod, "_POLL_INTERVAL", 0)
+    monkeypatch.setattr(sessions_mod, "_POLL_INTERVAL", 0.001)
 
     sleep_calls = []
     original_sleep = asyncio.sleep

@@ -16,7 +16,7 @@ _log = logging.getLogger(__name__)
 _POLL_INTERVAL = 5          # seconds between each search
 _NO_RESULTS_TIMEOUT = 600   # seconds before pausing (10 minutes)
 _PAUSE_DURATION = 3600      # seconds to pause before retrying (1 hour)
-_PAUSE_ADVERTISED = 3600    # retry_in value reported to clients (always 1 hour)
+_PAUSE_ADVERTISED = 3600    # retry_in shown to clients — kept separate from _PAUSE_DURATION so tests can patch the sleep without changing what clients see
 
 # session_id -> { queue, task, postal_code, service_type, user_email, notify }
 _sessions: dict[str, dict] = {}
