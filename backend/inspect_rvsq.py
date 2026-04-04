@@ -80,6 +80,37 @@ def dump_elements(driver, label: str) -> dict:
         text: (el.innerText || '').slice(0, 80)
     }));
 
+    // Clinic cards (search results page)
+    results.clinic_cards = Array.from(document.querySelectorAll('a.h-selectClinic, [class*=selectClinic], [class*=clinic]')).slice(0, 5).map(el => ({
+        tag: el.tagName.toLowerCase(), id: el.id, classes: el.className,
+        data: Object.fromEntries(Array.from(el.attributes).filter(a => a.name.startsWith('data-')).map(a => [a.name, a.value])),
+        text: (el.innerText || '').slice(0, 100)
+    }));
+
+    // Slot/time buttons (slot calendar page)
+    results.slot_buttons = Array.from(document.querySelectorAll(
+        '[class*=slot],[class*=Slot],[class*=heure],[class*=time],[class*=disponible],[class*=available]'
+    )).slice(0, 10).map(el => ({
+        tag: el.tagName.toLowerCase(), id: el.id, classes: el.className,
+        data: Object.fromEntries(Array.from(el.attributes).filter(a => a.name.startsWith('data-')).map(a => [a.name, a.value])),
+        text: (el.innerText || '').slice(0, 60)
+    }));
+
+    // Confirmation number (booking confirmation page)
+    results.confirmation_elements = Array.from(document.querySelectorAll(
+        '[class*=confirm],[class*=Confirm],[class*=number],[class*=numero],[class*=reference],[class*=Reference]'
+    )).slice(0, 10).map(el => ({
+        tag: el.tagName.toLowerCase(), id: el.id, classes: el.className,
+        text: (el.innerText || '').slice(0, 100)
+    }));
+
+    // ALL anchors and clickable elements (for clinic card discovery)
+    results.all_anchors = Array.from(document.querySelectorAll('a[class]')).slice(0, 20).map(el => ({
+        tag: 'a', id: el.id, classes: el.className, href: (el.href||'').slice(0,80),
+        data: Object.fromEntries(Array.from(el.attributes).filter(a => a.name.startsWith('data-')).map(a => [a.name, a.value])),
+        text: (el.innerText || '').slice(0, 60)
+    }));
+
     return results;
     """
     data = driver.execute_script(script)
@@ -105,18 +136,16 @@ def main():
 
         print()
         print("=" * 60)
-        print("ACTION REQUIRED:")
-        print("  In the Chrome window, fill in your RAMQ credentials")
-        print("  and click 'Continuer' to log in.")
-        print("  After you see the post-login page, come back here")
-        print("  and press Enter to capture the search form.")
+        print("STEP 1 — LOG IN:")
+        print("  Fill in your RAMQ credentials and click Continuer.")
+        print("  Come back here once you see the post-login page.")
         print("=" * 60)
-        input("  >>> Press Enter once you are logged in: ")
+        input("  >>> Press Enter once logged in: ")
 
         print(f"  Current page: {driver.title}")
         output.append(dump_elements(driver, "post_login_page"))
 
-        # Try to find and click the clinic search nav link
+        # Navigate to clinic search
         print("Looking for clinic search navigation...")
         try:
             links = driver.find_elements("css selector", "a")
@@ -127,22 +156,49 @@ def main():
                     link.click()
                     time.sleep(3)
                     output.append(dump_elements(driver, "clinic_search_page"))
-                    print()
-                    print("=" * 60)
-                    print("ACTION REQUIRED:")
-                    print("  The search form should now be visible.")
-                    print("  Press Enter to also capture the results page after")
-                    print("  searching (optional — run a search first).")
-                    print("  Or just press Enter now to skip.")
-                    print("=" * 60)
-                    input("  >>> Run a search then press Enter (or just Enter to skip): ")
-                    output.append(dump_elements(driver, "search_results_page"))
                     break
             else:
                 print("  No clinic search link found — dumping current page as fallback.")
-                output.append(dump_elements(driver, "nav_page"))
+                output.append(dump_elements(driver, "clinic_search_page"))
         except Exception as e:
             print(f"  Could not navigate to search form: {e}")
+
+        print()
+        print("=" * 60)
+        print("STEP 2 — SEARCH WITH A POSTAL CODE THAT HAS RESULTS:")
+        print("  Use: H2X 1Y6 or H3H 1V4 (central Montreal — usually has slots)")
+        print("  Fill postal code, set radius to 50 km, pick any service type.")
+        print("  Click Rechercher and WAIT for clinic cards to appear.")
+        print("  Then come back here and press Enter.")
+        print("=" * 60)
+        input("  >>> Run search, wait for results, then press Enter: ")
+
+        output.append(dump_elements(driver, "search_results_page"))
+
+        print()
+        print("=" * 60)
+        print("STEP 3 — CLICK A CLINIC CARD:")
+        print("  In the browser, click on any clinic card that shows availability.")
+        print("  You should land on a slot calendar / time picker page.")
+        print("  Come back here and press Enter.")
+        print("=" * 60)
+        input("  >>> Click a clinic card, then press Enter: ")
+
+        output.append(dump_elements(driver, "slot_calendar_page"))
+
+        print()
+        print("=" * 60)
+        print("STEP 4 (OPTIONAL) — SELECT A SLOT AND CONFIRM:")
+        print("  Click a time slot then click Confirmer le rendez-vous.")
+        print("  This captures the confirmation number element.")
+        print("  SKIP this if you don't want to actually book an appointment.")
+        print("=" * 60)
+        choice = input("  >>> Press Enter to capture confirmation page, or type 'skip' to skip: ").strip().lower()
+
+        if choice != "skip":
+            output.append(dump_elements(driver, "confirmation_page"))
+        else:
+            print("  Skipping confirmation page capture.")
 
     finally:
         driver.quit()
@@ -152,7 +208,7 @@ def main():
         json.dump(output, f, indent=2, ensure_ascii=False)
 
     print(f"\n✓ Saved to {out_file}")
-    print("  Share rvsq_elements.json and Claude will fill in all the selectors automatically.")
+    print("  Claude will now read this file and fill in all selectors automatically.")
 
 
 if __name__ == "__main__":

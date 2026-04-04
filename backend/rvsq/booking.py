@@ -21,13 +21,13 @@ from models.rvsq_models import BookingResult, RVSQError
 
 # Confirmed selectors (all verified from live RVSQ DOM inspection)
 CLINIC_CARD_CSS      = "a.h-selectClinic[data-companyid='{company_id}']"  # slot_id = data-companyid
-CALENDAR_PAGE_CSS    = "button.h-TimeButton"              # confirms we're on slot calendar page
-SLOT_TIME_BUTTON_CSS = "button.h-TimeButton"              # individual time slot button
-CONTINUE_BUTTON_CSS  = ".buttonContinueCIF"               # "Continuer" on contact-info form
-CONFIRM_BUTTON_CSS   = ".buttonConfirmAppointment"        # "Confirmer le rendez-vous" on summary page
-CONFIRM_NUMBER_CSS   = "input.noReferenceAssure"          # hidden input, value = reference number (no spaces)
-SLOT_TAKEN_CSS       = ".alert.alert-danger"              # generic danger alert
-SESSION_EXPIRED_CSS  = ".WarningMessage_ExpiredNAM"       # confirmed from inspect_rvsq.py
+CALENDAR_CSS         = "table#appointmentcalendar, .h-Calendar"           # calendar page indicator
+SLOT_TIME_BUTTON_CSS = "button.h-TimeButton"                              # individual time slot button
+CONTINUE_BUTTON_CSS  = ".buttonContinueCIF"                               # "Continuer" on contact-info form
+CONFIRM_BUTTON_CSS   = ".buttonConfirmAppointment"                        # "Confirmer le rendez-vous" on summary page
+CONFIRM_NUMBER_CSS   = "input.noReferenceAssure"                          # hidden input, value = reference number (no spaces)
+SLOT_TAKEN_CSS       = ".alert.alert-danger"                              # generic danger alert
+SESSION_EXPIRED_CSS  = ".WarningMessage_ExpiredNAM"                       # confirmed from inspect_rvsq.py
 
 WAIT_TIMEOUT = 15
 
@@ -39,7 +39,7 @@ def _locate_and_click_slot(
     phone: str = "",
 ) -> None:
     """
-    Full booking navigation flow:
+    Full booking navigation:
     1. Click the clinic card (a.h-selectClinic[data-companyid=slot_id])
     2. Wait for the slot calendar page (button.h-TimeButton visible)
     3. Click the first available time slot button
@@ -55,12 +55,13 @@ def _locate_and_click_slot(
 
     # Step 2 — wait for calendar page (at least one time slot button visible)
     WebDriverWait(driver, WAIT_TIMEOUT).until(
-        EC.presence_of_element_located((By.CSS_SELECTOR, CALENDAR_PAGE_CSS))
+        EC.presence_of_element_located((By.CSS_SELECTOR, CALENDAR_CSS))
     )
 
     # Step 3 — click first available time slot
+    slot_selector = SLOT_TIME_BUTTON_CSS
     slot_el = WebDriverWait(driver, WAIT_TIMEOUT).until(
-        EC.element_to_be_clickable((By.CSS_SELECTOR, SLOT_TIME_BUTTON_CSS))
+        EC.element_to_be_clickable((By.CSS_SELECTOR, slot_selector))
     )
     slot_el.click()
 

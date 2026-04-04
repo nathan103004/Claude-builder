@@ -6,12 +6,25 @@ export default function Home({ params: { locale } }: { params: { locale: string 
   const otherLocale = locale === 'fr' ? 'en' : 'fr';
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8">
-      <h1 className="text-4xl font-bold">{t('title')}</h1>
-      <p className="mt-4 text-lg text-gray-600">{t('subtitle')}</p>
-      <Link href={`/${otherLocale}`} className="mt-6 underline text-blue-600">
+    <main className="flex min-h-screen flex-col items-center justify-center p-8 gap-6 bg-white">
+      {/* Quebec fleur-de-lis accent bar */}
+      <div className="flex flex-col items-center gap-3 text-center">
+        <div className="w-16 h-1 bg-blue-600 rounded-full mb-2" />
+        <h1 className="text-5xl font-bold text-blue-600 tracking-tight">{t('title')}</h1>
+        <p className="text-lg text-gray-500 max-w-sm">{t('subtitle')}</p>
+      </div>
+      <Link
+        href={`/${locale}/onboarding/language`}
+        className="mt-2 px-10 py-4 bg-blue-600 text-white text-lg font-semibold rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-md transition-colors"
+      >
+        {t('get_started')}
+      </Link>
+      <Link href={`/${otherLocale}`} className="text-sm underline text-blue-600 hover:text-blue-800">
         {t('language_toggle')}
       </Link>
+      <p className="absolute bottom-6 text-xs text-gray-400">
+        Gouvernement du Québec
+      </p>
     </main>
   );
 }

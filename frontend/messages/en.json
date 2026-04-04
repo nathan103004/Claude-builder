@@ -2,7 +2,8 @@
   "home": {
     "title": "SantéNav",
     "subtitle": "Find the right clinic, fast.",
-    "language_toggle": "Français"
+    "language_toggle": "Français",
+    "get_started": "Get started"
   },
   "onboarding": {
     "language": {

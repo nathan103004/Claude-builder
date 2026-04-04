@@ -28,7 +28,8 @@ class SearchParams:
 class TimeSlot:
     date: str
     time: str
-    slot_id: str   # opaque DOM identifier used by booking
+    slot_id: str        # data-companyid from clinic card — identifies which clinic to click
+    slot_data_ids: str = ""  # data-ids from button.h-TimeButton — identifies specific time slot
 
 @dataclass
 class ClinicCard:

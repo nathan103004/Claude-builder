@@ -189,7 +189,7 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <main id="main-content" className="min-h-screen bg-gray-50 p-6">
+    <main id="main-content" className="min-h-screen bg-blue-50 p-6">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-2xl font-bold mb-6">{t('title')}</h1>
 
