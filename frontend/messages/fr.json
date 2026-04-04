@@ -97,5 +97,14 @@
       "call_button": "Appeler le 911",
       "disclaimer": "SantéNav ne peut pas contacter les services d'urgence en votre nom. Appelez le 911 directement."
     }
+  },
+  "chatbot": {
+    "trigger": "Pas sûr où aller ?",
+    "heading": "Assistant santé",
+    "placeholder": "Décrivez vos symptômes ou votre situation...",
+    "send": "Envoyer",
+    "close": "Fermer",
+    "thinking": "En cours...",
+    "disclaimer": "Cet assistant aide à choisir un type de soins. Ce n'est pas un diagnostic médical."
   }
 }

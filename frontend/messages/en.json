@@ -97,5 +97,14 @@
       "call_button": "Call 911",
       "disclaimer": "SantéNav cannot contact emergency services on your behalf. Call 911 directly."
     }
+  },
+  "chatbot": {
+    "trigger": "Not sure where to go?",
+    "heading": "Health assistant",
+    "placeholder": "Describe your symptoms or concern...",
+    "send": "Send",
+    "close": "Close",
+    "thinking": "Thinking...",
+    "disclaimer": "This assistant helps choose a care type. It is not a medical diagnosis."
   }
 }
