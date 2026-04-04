@@ -18,7 +18,12 @@
       "password": "Password",
       "submit": "Create my account",
       "error_duplicate": "This email address is already registered.",
-      "error_generic": "Something went wrong. Please try again."
+      "error_generic": "Something went wrong. Please try again.",
+      "login": "Sign in",
+      "login_heading": "Sign in to your account",
+      "login_submit": "Sign in",
+      "error_invalid": "Invalid email or password.",
+      "already_have_account": "Already have an account?"
     },
     "textSize": {
       "title": "Text size",

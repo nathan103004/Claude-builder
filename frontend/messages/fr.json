@@ -18,7 +18,12 @@
       "password": "Mot de passe",
       "submit": "Créer mon compte",
       "error_duplicate": "Cette adresse courriel est déjà utilisée.",
-      "error_generic": "Une erreur est survenue. Veuillez réessayer."
+      "error_generic": "Une erreur est survenue. Veuillez réessayer.",
+      "login": "Se connecter",
+      "login_heading": "Connectez-vous à votre compte",
+      "login_submit": "Se connecter",
+      "error_invalid": "Courriel ou mot de passe invalide.",
+      "already_have_account": "Vous avez déjà un compte ?"
     },
     "textSize": {
       "title": "Taille du texte",
