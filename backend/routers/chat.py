@@ -105,15 +105,19 @@ async def _stream_chat(messages: list[ChatMessage], locale: str) -> AsyncIterato
     client = AsyncAnthropic(api_key=api_key)
     full_text = ""
 
-    async with client.messages.stream(
-        model="claude-haiku-4-5-20251001",
-        max_tokens=512,
-        system=system,
-        messages=[{"role": m.role, "content": m.content} for m in messages],
-    ) as stream:
-        async for delta in stream.text_stream:
-            full_text += delta
-            yield f"event: token\ndata: {json.dumps({'text': delta})}\n\n"
+    try:
+        async with client.messages.stream(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=512,
+            system=system,
+            messages=[{"role": m.role, "content": m.content} for m in messages],
+        ) as stream:
+            async for delta in stream.text_stream:
+                full_text += delta
+                yield f"event: token\ndata: {json.dumps({'text': delta})}\n\n"
+    except Exception as exc:
+        yield f"event: error\ndata: {json.dumps({'code': 'API_ERROR', 'message': str(exc)})}\n\n"
+        return
 
     # Extract JSON result from accumulated text
     try:

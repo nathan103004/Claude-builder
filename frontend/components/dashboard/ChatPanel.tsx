@@ -21,6 +21,7 @@ export default function ChatPanel({ locale, onServiceTypeSelect, onEmergencySele
   const [input, setInput] = useState('');
   const [streaming, setStreaming] = useState(false);
   const [streamBuffer, setStreamBuffer] = useState('');
+  const [error, setError] = useState<string | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -84,6 +85,7 @@ export default function ChatPanel({ locale, onServiceTypeSelect, onEmergencySele
     setInput('');
     setStreaming(true);
     setStreamBuffer('');
+    setError(null);
 
     try {
       const resp = await fetch('/api/chat', {
@@ -120,6 +122,11 @@ export default function ChatPanel({ locale, onServiceTypeSelect, onEmergencySele
               const { text } = JSON.parse(raw);
               assistantContent += text;
               setStreamBuffer(assistantContent);
+            } else if (eventType === 'error') {
+              const { message } = JSON.parse(raw);
+              setError(message || 'An error occurred. Please try again.');
+              setStreaming(false);
+              return;
             } else if (eventType === 'result') {
               const result = JSON.parse(raw);
               setMessages((prev) => [...prev, { role: 'assistant', content: assistantContent }]);
@@ -144,8 +151,8 @@ export default function ChatPanel({ locale, onServiceTypeSelect, onEmergencySele
         setMessages((prev) => [...prev, { role: 'assistant', content: assistantContent }]);
       }
       setStreamBuffer('');
-    } catch {
-      // ignore errors silently — user can retry
+    } catch (e) {
+      setError('Connection error. Please try again.');
     } finally {
       setStreaming(false);
     }
@@ -241,6 +248,11 @@ export default function ChatPanel({ locale, onServiceTypeSelect, onEmergencySele
 
           <div ref={messagesEndRef} />
         </div>
+
+        {/* Error */}
+        {error && (
+          <p className="text-xs text-red-600 px-4 pb-1">{error}</p>
+        )}
 
         {/* Input area */}
         <div className="border-t p-3 flex gap-2">
