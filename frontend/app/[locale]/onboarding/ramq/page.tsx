@@ -134,8 +134,9 @@ export default function RamqPage({ params: { locale } }: { params: { locale: str
           {t('submit')}
         </button>
         <button type="button" onClick={() => setView('choose')}
+          aria-label={t('back_aria')}
           className="text-sm text-gray-500 underline text-center focus-visible:ring-2 focus-visible:ring-blue-500 rounded">
-          ←
+          <span aria-hidden="true">←</span>
         </button>
       </form>
     );

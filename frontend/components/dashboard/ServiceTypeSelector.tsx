@@ -32,9 +32,9 @@ export default function ServiceTypeSelector({
 
   return (
     <div className="flex flex-col gap-3">
-      <h2 className="text-lg font-semibold">{t('heading')}</h2>
+      <h2 id="service-type-heading" className="text-lg font-semibold">{t('heading')}</h2>
 
-      <div className="flex flex-col gap-3">
+      <div role="group" aria-labelledby="service-type-heading" className="flex flex-col gap-3">
         {RVSQ_SERVICE_TYPES.map((type) => {
           const isSelected = selectedServiceType === type;
           return (
@@ -66,7 +66,6 @@ export default function ServiceTypeSelector({
         <button
           type="button"
           onClick={onEmergencySelect}
-          aria-pressed={false}
           className="w-full text-left border rounded-lg p-4 transition-colors border-red-500 text-red-700 hover:bg-red-50 bg-white"
         >
           <span className="block font-medium">{t('emergency')}</span>

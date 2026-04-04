@@ -57,7 +57,8 @@
       "numero_error": "Invalid format (e.g. GUAN94012812)",
       "sequentiel_error": "Two digits required",
       "submit": "Confirm",
-      "review_title": "Review your information"
+      "review_title": "Review your information",
+      "back_aria": "Go back to card capture options"
     }
   },
   "dashboard": {
@@ -66,7 +67,7 @@
     "no_results": "No clinics found. We'll keep searching.",
     "book": "Book",
     "book_soon": "Booking coming soon",
-    "slots_count": "slots available",
+    "slots_count": "{count, plural, one {1 slot available} other {# slots available}}",
     "new_slot": "New slot available!",
     "connection_lost": "Connection lost. Retrying...",
     "searching_again": "Updating in",
@@ -99,6 +100,7 @@
       "placeholder_location": "Enter your full address or location",
       "placeholder_ramq": "Enter your RAMQ number",
       "back": "← Back to appointment types",
+      "back_aria": "Go back to appointment types",
       "call_button": "Call 911",
       "disclaimer": "SantéNav cannot contact emergency services on your behalf. Call 911 directly."
     }

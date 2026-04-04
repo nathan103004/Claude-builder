@@ -16,6 +16,7 @@ export default function EmergencyPrompt({
 }: EmergencyPromptProps) {
   const t = useTranslations('dashboard.emergency');
   const callButtonRef = useRef<HTMLAnchorElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const [name, setName] = useState(prefillName);
   const [location, setLocation] = useState('');
@@ -25,15 +26,53 @@ export default function EmergencyPrompt({
     callButtonRef.current?.focus();
   }, []);
 
+  // Focus trap: keep keyboard navigation within this dialog
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key !== 'Tab') return;
+      const focusable = Array.from(
+        container!.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   return (
-    <div className="max-w-lg mx-auto">
+    <div
+      ref={containerRef}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="emergency-heading"
+      className="max-w-lg mx-auto"
+    >
       <div
         role="alert"
         aria-live="assertive"
         className="bg-red-600 text-white p-6 rounded-t-lg flex items-center gap-3"
       >
         <span aria-hidden="true" className="text-3xl">📞</span>
-        <h1 className="text-2xl font-bold">{t('heading')}</h1>
+        <h1 id="emergency-heading" className="text-2xl font-bold">{t('heading')}</h1>
       </div>
 
       <div className="border border-t-0 border-gray-200 rounded-b-lg p-6 bg-white flex flex-col gap-6">
@@ -103,9 +142,10 @@ export default function EmergencyPrompt({
         <button
           type="button"
           onClick={onBack}
+          aria-label={t('back_aria')}
           className="text-blue-600 underline hover:text-blue-800 self-start"
         >
-          {t('back')}
+          <span aria-hidden="true">←</span> {t('back').replace('← ', '')}
         </button>
       </div>
     </div>

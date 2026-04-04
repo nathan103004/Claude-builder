@@ -57,7 +57,8 @@
       "numero_error": "Format invalide (ex. GUAN94012812)",
       "sequentiel_error": "Deux chiffres requis",
       "submit": "Confirmer",
-      "review_title": "Vérifiez vos informations"
+      "review_title": "Vérifiez vos informations",
+      "back_aria": "Retour aux options de capture de la carte"
     }
   },
   "dashboard": {
@@ -66,7 +67,7 @@
     "no_results": "Aucune clinique trouvée. Nous continuons la recherche.",
     "book": "Réserver",
     "book_soon": "Réservation bientôt disponible",
-    "slots_count": "créneaux disponibles",
+    "slots_count": "{count, plural, one {1 créneau disponible} other {# créneaux disponibles}}",
     "new_slot": "Nouveau créneau disponible !",
     "connection_lost": "Connexion perdue. Nouvelle tentative...",
     "searching_again": "Mise à jour dans",
@@ -99,6 +100,7 @@
       "placeholder_location": "Entrez votre adresse complète ou votre emplacement",
       "placeholder_ramq": "Entrez votre numéro RAMQ",
       "back": "← Retour aux types de rendez-vous",
+      "back_aria": "Retour aux types de rendez-vous",
       "call_button": "Appeler le 911",
       "disclaimer": "SantéNav ne peut pas contacter les services d'urgence en votre nom. Appelez le 911 directement."
     }

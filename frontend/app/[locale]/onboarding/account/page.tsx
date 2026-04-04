@@ -140,7 +140,7 @@ export default function AccountPage({ params: { locale } }: { params: { locale: 
             {loading ? '...' : t('submit')}
           </button>
           <button type="button" onClick={resetForms} className="text-sm text-gray-500 underline focus-visible:ring-2 focus-visible:ring-blue-500 rounded">
-            ← {t('guest')}
+            <span aria-hidden="true">←</span> {t('guest')}
           </button>
         </form>
       ) : (
@@ -179,7 +179,7 @@ export default function AccountPage({ params: { locale } }: { params: { locale: 
             {loading ? '...' : t('login_submit')}
           </button>
           <button type="button" onClick={resetForms} className="text-sm text-gray-500 underline focus-visible:ring-2 focus-visible:ring-blue-500 rounded">
-            ← {t('guest')}
+            <span aria-hidden="true">←</span> {t('guest')}
           </button>
         </form>
       )}

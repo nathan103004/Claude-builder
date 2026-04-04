@@ -23,10 +23,55 @@ export default function ChatPanel({ locale, onServiceTypeSelect, onEmergencySele
   const [streamBuffer, setStreamBuffer] = useState('');
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const triggerButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, streamBuffer]);
+
+  // Focus management: move focus into/out of panel on open/close
+  useEffect(() => {
+    if (isOpen) {
+      textareaRef.current?.focus();
+    } else {
+      triggerButtonRef.current?.focus();
+    }
+  }, [isOpen]);
+
+  // Focus trap: keep keyboard navigation within the panel when open
+  useEffect(() => {
+    if (!isOpen) return;
+    const panel = panelRef.current;
+    if (!panel) return;
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key !== 'Tab') return;
+      const focusable = Array.from(
+        panel!.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
 
   const userMessageCount = messages.filter((m) => m.role === 'user').length;
   const inputDisabled = streaming || userMessageCount >= 3;
@@ -120,6 +165,7 @@ export default function ChatPanel({ locale, onServiceTypeSelect, onEmergencySele
       {/* Floating trigger button */}
       {!isOpen && (
         <button
+          ref={triggerButtonRef}
           type="button"
           onClick={() => setIsOpen(true)}
           className="fixed bottom-6 right-6 z-50 bg-blue-600 text-white rounded-full px-4 py-3 shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
@@ -139,6 +185,10 @@ export default function ChatPanel({ locale, onServiceTypeSelect, onEmergencySele
 
       {/* Slide-up panel */}
       <div
+        ref={panelRef}
+        role="dialog"
+        aria-labelledby="chat-heading"
+        aria-modal="true"
         className={[
           'fixed bottom-0 left-0 right-0 md:left-auto md:right-6 md:bottom-6 md:w-96',
           'bg-white rounded-t-2xl md:rounded-2xl shadow-2xl flex flex-col z-50 max-h-[80vh]',
@@ -149,7 +199,7 @@ export default function ChatPanel({ locale, onServiceTypeSelect, onEmergencySele
       >
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-3 border-b">
-          <span className="font-semibold">{t('heading')}</span>
+          <span id="chat-heading" className="font-semibold">{t('heading')}</span>
           <button
             type="button"
             onClick={() => setIsOpen(false)}
@@ -174,18 +224,20 @@ export default function ChatPanel({ locale, onServiceTypeSelect, onEmergencySele
             </div>
           ))}
 
-          {/* Streaming state */}
-          {streaming && streamBuffer === '' && (
-            <div className="self-start bg-gray-100 text-gray-800 rounded-2xl rounded-bl-sm px-3 py-2 text-sm max-w-[80%]">
-              {t('thinking')}
-            </div>
-          )}
-          {streaming && streamBuffer !== '' && (
-            <div className="self-start bg-gray-100 text-gray-800 rounded-2xl rounded-bl-sm px-3 py-2 text-sm max-w-[80%]">
-              {streamBuffer}
-              <span className="inline-block w-1 h-3 ml-0.5 bg-gray-600 animate-pulse" />
-            </div>
-          )}
+          {/* Streaming state — live region announces to screen readers */}
+          <div aria-live="polite" aria-atomic="true">
+            {streaming && streamBuffer === '' && (
+              <div className="self-start bg-gray-100 text-gray-800 rounded-2xl rounded-bl-sm px-3 py-2 text-sm max-w-[80%]">
+                {t('thinking')}
+              </div>
+            )}
+            {streaming && streamBuffer !== '' && (
+              <div className="self-start bg-gray-100 text-gray-800 rounded-2xl rounded-bl-sm px-3 py-2 text-sm max-w-[80%]">
+                {streamBuffer}
+                <span className="inline-block w-1 h-3 ml-0.5 bg-gray-600 animate-pulse" />
+              </div>
+            )}
+          </div>
 
           <div ref={messagesEndRef} />
         </div>
@@ -193,11 +245,13 @@ export default function ChatPanel({ locale, onServiceTypeSelect, onEmergencySele
         {/* Input area */}
         <div className="border-t p-3 flex gap-2">
           <textarea
+            ref={textareaRef}
             rows={1}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder={t('placeholder')}
+            aria-label={t('placeholder')}
             disabled={inputDisabled}
             className="flex-1 border rounded-lg px-3 py-2 text-sm resize-none disabled:opacity-50"
           />

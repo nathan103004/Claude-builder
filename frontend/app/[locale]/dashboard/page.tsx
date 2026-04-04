@@ -112,7 +112,7 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <main className="min-h-screen bg-gray-50 p-6">
+    <main id="main-content" className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-2xl font-bold mb-6">{t('title')}</h1>
 
@@ -181,11 +181,11 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
         {/* Clinic cards */}
         <div className="flex flex-col gap-4">
           {clinics.map((clinic) => (
-            <div key={clinic.clinic_name} className="bg-white rounded-2xl shadow p-5">
+            <article key={clinic.clinic_name} className="bg-white rounded-2xl shadow p-5">
               <h2 className="text-lg font-semibold">{clinic.clinic_name}</h2>
               <p className="text-sm text-gray-500 mt-1">{clinic.address}</p>
               <p className="text-sm font-medium mt-3 mb-2">
-                {clinic.slots.length} {t('slots_count')}
+                {t('slots_count', { count: clinic.slots.length })}
               </p>
               <div className="flex flex-wrap gap-2">
                 {clinic.slots.map((slot) => (
@@ -205,7 +205,7 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
                   </div>
                 ))}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
