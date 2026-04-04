@@ -11,7 +11,7 @@ from rvsq.scraper import parse_clinic_cards
 
 # --- Selectors (populated from rvsq_elements.json DOM inspection via inspect_rvsq.py) ---
 # Recherche.aspx uses hash fragments: #accueil (post-login landing) → #criteres_t1 (search form)
-SEARCH_NAV_XPATH       = "//a[contains(text(), 'Prendre rendez-vous dans une clinique')]"
+SEARCH_NAV_XPATH       = "//a[contains(., 'Prendre rendez-vous dans une clinique')]"
 POSTAL_CODE_ID         = "PostalCode"
 RADIUS_SELECT_ID       = "perimeterCombo"   # options text: "10 km"…"50 km"
 DATE_ID                = "DateRangeStart"   # flatpickr date input, format jj-mm-aaaa (DD-MM-YYYY)

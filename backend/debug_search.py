@@ -36,7 +36,7 @@ def main():
 
         # --- Step 1: find the nav link ---
         step("Looking for 'Prendre rendez-vous' link...")
-        links = driver.find_elements(By.XPATH, "//a[contains(text(), 'Prendre rendez-vous dans une clinique')]")
+        links = driver.find_elements(By.XPATH, "//a[contains(., 'Prendre rendez-vous dans une clinique')]")
         print(f"  Found {len(links)} matching link(s)")
         for i, l in enumerate(links):
             print(f"  [{i}] text={repr(l.text)}  displayed={l.is_displayed()}  enabled={l.is_enabled()}")
