@@ -1,7 +1,10 @@
+from __future__ import annotations
+
 import json
 import os
 import uuid
 from datetime import datetime, timedelta, timezone
+from typing import Optional
 
 import bcrypt as _bcrypt
 
@@ -18,7 +21,7 @@ TOKEN_EXPIRE_DAYS = 30
 _bearer = HTTPBearer(auto_error=False)
 
 
-def _decode_token(credentials: HTTPAuthorizationCredentials | None) -> str | None:
+def _decode_token(credentials: Optional[HTTPAuthorizationCredentials]) -> Optional[str]:
     """Return user_id from a valid Bearer token, or None."""
     if credentials is None:
         return None
@@ -89,7 +92,7 @@ class PreferencesRequest(BaseModel):
 @router.patch("/me/preferences")
 def update_preferences(
     body: PreferencesRequest,
-    credentials: HTTPAuthorizationCredentials | None = Depends(_bearer),
+    credentials: Optional[HTTPAuthorizationCredentials] = Depends(_bearer),
 ):
     user_id = _decode_token(credentials)
     if not user_id:

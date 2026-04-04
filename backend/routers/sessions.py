@@ -1,9 +1,11 @@
+from __future__ import annotations
+
 import asyncio
 import json
 import logging
 import uuid
 from datetime import date, timedelta
-from typing import AsyncIterator
+from typing import AsyncIterator, Optional
 
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
@@ -105,7 +107,7 @@ async def _event_generator(session_id: str) -> AsyncIterator[str]:
 class SessionRequest(BaseModel):
     postal_code: str
     service_type: str = "Consultation urgente"
-    token: str | None = None
+    token: Optional[str] = None
 
 
 @router.post("", status_code=201)
