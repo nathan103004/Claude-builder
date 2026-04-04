@@ -11,7 +11,7 @@ from rvsq.scraper import parse_clinic_cards
 
 # --- Selectors (populated from rvsq_elements.json DOM inspection via inspect_rvsq.py) ---
 # Recherche.aspx uses hash fragments: #accueil (post-login landing) → #criteres_t1 (search form)
-SEARCH_NAV_SELECTOR    = 'a[href="#criteres_t1"]'
+SEARCH_NAV_XPATH       = "//a[contains(text(), 'Prendre rendez-vous dans une clinique')]"
 POSTAL_CODE_ID         = "PostalCode"
 RADIUS_SELECT_ID       = "perimeterCombo"   # options text: "10 km"…"50 km"
 DATE_ID                = "DateRangeStart"   # flatpickr date input, format jj-mm-aaaa (DD-MM-YYYY)
@@ -33,7 +33,7 @@ WAIT_TIMEOUT = 30  # RVSQ can be slow — give each search attempt up to 30 seco
 
 def _navigate_to_search_form(driver):
     WebDriverWait(driver, WAIT_TIMEOUT).until(
-        EC.element_to_be_clickable((By.CSS_SELECTOR, SEARCH_NAV_SELECTOR))
+        EC.element_to_be_clickable((By.XPATH, SEARCH_NAV_XPATH))
     ).click()
 
 
@@ -94,7 +94,7 @@ def _assert_selectors_configured() -> None:
     placeholders = {"REPLACE", "REPLACE_CHECKBOX_ID"}
     unconfigured = [
         name for name, val in [
-            ("SEARCH_NAV_SELECTOR", SEARCH_NAV_SELECTOR),
+            ("SEARCH_NAV_XPATH", SEARCH_NAV_XPATH),
             ("POSTAL_CODE_ID", POSTAL_CODE_ID),
             ("RADIUS_SELECT_ID", RADIUS_SELECT_ID),
             ("DATE_ID", DATE_ID),
