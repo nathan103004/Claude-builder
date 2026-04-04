@@ -41,7 +41,15 @@ def main():
             moments=["avant-midi", "apres-midi", "soir"],
         )
 
-        print("\nRunning search_clinics() — watch the browser...")
+        print("\nStep 1 — navigating to search form...")
+        from selenium.webdriver.support.ui import WebDriverWait
+        from selenium.webdriver.support import expected_conditions as EC
+        from selenium.webdriver.common.by import By
+        WebDriverWait(driver, 30).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'a[href="#criteres_t1"]'))
+        ).click()
+        input("Search form should be visible. Press ENTER to fill it and search...")
+
         result = search_clinics(driver, params)
 
         print("\n--- RESULT ---")

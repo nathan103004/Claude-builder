@@ -28,7 +28,7 @@ MOMENTS = {
     "soir":       "chkSoir",
 }
 
-WAIT_TIMEOUT = 15
+WAIT_TIMEOUT = 30  # RVSQ can be slow — give each search attempt up to 30 seconds to load
 
 
 def _navigate_to_search_form(driver):
