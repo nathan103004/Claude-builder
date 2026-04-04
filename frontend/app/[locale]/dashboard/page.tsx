@@ -80,17 +80,13 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
           } catch {}
         });
 
-        es.addEventListener('paused', (e: MessageEvent) => {
+        es.addEventListener('paused', () => {
           if (!cancelled) setPaused(true);
         });
 
         es.addEventListener('error', () => {
           if (!cancelled) setConnError(true);
         });
-
-        es.onerror = () => {
-          if (!cancelled) setConnError(true);
-        };
       } catch {
         if (!cancelled) {
           setLoading(false);
@@ -156,16 +152,16 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
 
         {/* Clinic cards */}
         <div className="flex flex-col gap-4">
-          {clinics.map((clinic, ci) => (
-            <div key={ci} className="bg-white rounded-2xl shadow p-5">
+          {clinics.map((clinic) => (
+            <div key={clinic.clinic_name} className="bg-white rounded-2xl shadow p-5">
               <h2 className="text-lg font-semibold">{clinic.clinic_name}</h2>
               <p className="text-sm text-gray-500 mt-1">{clinic.address}</p>
               <p className="text-sm font-medium mt-3 mb-2">
                 {clinic.slots.length} {t('slots_count')}
               </p>
               <div className="flex flex-wrap gap-2">
-                {clinic.slots.map((slot, si) => (
-                  <div key={si} className="flex items-center gap-2 bg-blue-50 rounded-lg px-3 py-2">
+                {clinic.slots.map((slot) => (
+                  <div key={`${slot.date}-${slot.time}`} className="flex items-center gap-2 bg-blue-50 rounded-lg px-3 py-2">
                     <span className="text-sm text-blue-800 font-medium">
                       {slot.date} · {slot.time}
                     </span>
