@@ -52,8 +52,14 @@ def _set_radius(driver, rayon_km):
 
 def _set_date(driver, date_debut):
     el = driver.find_element(By.ID, DATE_ID)
+    # RVSQ flatpickr expects DD-MM-YYYY; convert from YYYY-MM-DD
+    parts = date_debut.split("-")
+    if len(parts) == 3 and len(parts[0]) == 4:
+        formatted_date = f"{parts[2]}-{parts[1]}-{parts[0]}"
+    else:
+        formatted_date = date_debut
     el.clear()
-    el.send_keys(date_debut)
+    el.send_keys(formatted_date)
     el.send_keys(Keys.ESCAPE)  # close flatpickr calendar so it doesn't cover the search button
 
 
