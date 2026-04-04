@@ -1,5 +1,5 @@
 """
-Visual debug script for RVSQ search — step-by-step with pauses.
+Visual debug script for RVSQ search — auto-login + step-by-step search.
 
 Usage:
     cd backend
@@ -11,7 +11,10 @@ import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
+
+from models.rvsq_models import RAMQCredentials, SearchParams, RVSQError
+from rvsq.login import login_rvsq
+from rvsq.search import search_clinics
 
 
 def get_visible_driver():
@@ -20,83 +23,78 @@ def get_visible_driver():
     return uc.Chrome(options=options, version_main=146)
 
 
-def step(label):
-    print(f"\n▶ {label}")
+def prompt_credentials() -> RAMQCredentials:
+    print("\n--- RAMQ credentials ---")
+    prenom   = input("Prénom            : ").strip()
+    nom      = input("Nom               : ").strip()
+    ramq     = input("Numéro RAMQ       : ").strip()
+    seq      = input("Numéro séquentiel : ").strip()
+    jour     = input("Jour naissance    : ").strip()
+    mois     = input("Mois naissance    : ").strip()
+    annee    = input("Année naissance   : ").strip()
+    return RAMQCredentials(
+        prenom=prenom, nom=nom,
+        numero_assurance_maladie=ramq,
+        numero_sequentiel=seq,
+        date_naissance_jour=jour,
+        date_naissance_mois=mois,
+        date_naissance_annee=annee,
+    )
 
 
 def main():
+    credentials = prompt_credentials()
+    postal_code = input("Code postal [H2X 1Y4]: ").strip() or "H2X 1Y4"
+
     driver = get_visible_driver()
     try:
-        driver.get("https://www.rvsq.gouv.qc.ca/prendrerendezvous/Principale.aspx")
-
-        print("=" * 60)
-        print("Log in manually, then press ENTER.")
-        print("=" * 60)
-        input()
-
-        # --- Step 1: find the nav link ---
-        step("Looking for 'Prendre rendez-vous' link...")
-        links = driver.find_elements(By.XPATH, "//a[contains(., 'Prendre rendez-vous dans une clinique')]")
-        print(f"  Found {len(links)} matching link(s)")
-        for i, l in enumerate(links):
-            print(f"  [{i}] text={repr(l.text)}  displayed={l.is_displayed()}  enabled={l.is_enabled()}")
-
-        if not links:
-            print("  ❌ Link not found — printing all links:")
-            for a in driver.find_elements(By.TAG_NAME, "a"):
-                print(f"    {repr(a.text[:50])}  href={a.get_attribute('href') or ''}[:60]")
-            input("Press ENTER to quit.")
+        # --- Login ---
+        print("\n▶ Logging in automatically...")
+        error = login_rvsq(driver, credentials)
+        if error:
+            print(f"  ❌ Login failed: {error.code} — {error.message}")
+            input("Press ENTER to close.")
             return
+        print(f"  ✓ Logged in. URL: {driver.current_url}")
 
-        input("Press ENTER to click the link...")
-        links[0].click()
-        print(f"  URL after click: {driver.current_url}")
+        params = SearchParams(
+            code_postal=postal_code,
+            service_type="consultation_urgente",
+            date_debut=time.strftime("%Y-%m-%d"),
+            rayon_km=50,
+            moments=["avant-midi", "apres-midi", "soir"],
+        )
 
-        # --- Step 2: wait for postal code field ---
-        step("Waiting for postal code field (#PostalCode)...")
-        try:
-            el = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.ID, "PostalCode")))
-            print(f"  ✓ Found — value={repr(el.get_attribute('value'))}")
-        except Exception as e:
-            print(f"  ❌ Not found: {e}")
-            driver.save_screenshot("/tmp/step2_fail.png")
-            print("  Screenshot → /tmp/step2_fail.png")
-            input("Press ENTER to quit.")
-            return
+        # --- Search loop ---
+        attempt = 0
+        while True:
+            attempt += 1
+            print(f"\n--- Attempt {attempt} ---")
+            result = search_clinics(driver, params)
 
-        input("Press ENTER to fill the form and search...")
+            if isinstance(result, list) and len(result) > 0:
+                print(f"✓ Found {len(result)} clinic(s)!")
+                for c in result[:5]:
+                    print(f"  {c.clinic_name}  ({len(c.slots)} slot(s))")
+                    for s in c.slots[:3]:
+                        print(f"    {s.date} {s.time}  slot_id={s.slot_id}")
+                break
 
-        # --- Step 3: fill form ---
-        # Date and postal code are pre-filled by the portal — only set radius and service type
-        step("Setting radius to 50 km...")
-        Select(driver.find_element(By.ID, "perimeterCombo")).select_by_visible_text("50 km")
+            elif isinstance(result, list):
+                print("  No clinics this attempt — retrying in 5s...")
 
-        step("Setting service type...")
-        Select(driver.find_element(By.ID, "consultingReason")).select_by_visible_text("Consultation urgente")
+            elif isinstance(result, RVSQError):
+                screenshot = f"/tmp/rvsq_attempt{attempt}.png"
+                driver.save_screenshot(screenshot)
+                print(f"  ERROR {result.code}: {result.message}")
+                print(f"  URL: {driver.current_url}  screenshot → {screenshot}")
+                retry = input("  Press ENTER to retry, or 'q' to quit: ").strip()
+                if retry.lower() == "q":
+                    break
 
-        step("Clicking Rechercher...")
-        driver.find_element(By.ID, "searchbutton").click()
-        print(f"  URL after search click: {driver.current_url}")
+            time.sleep(5)
 
-        # --- Step 4: wait for results ---
-        step("Waiting for results (a.h-selectClinic or no-results div)...")
-        try:
-            WebDriverWait(driver, 30).until(
-                EC.any_of(
-                    EC.presence_of_element_located((By.CSS_SELECTOR, "a.h-selectClinic")),
-                    EC.presence_of_element_located((By.CSS_SELECTOR, "#clinicsWithNoDisponibilitiesContainer")),
-                )
-            )
-            clinics = driver.find_elements(By.CSS_SELECTOR, "a.h-selectClinic")
-            no_results = driver.find_elements(By.CSS_SELECTOR, "#clinicsWithNoDisponibilitiesContainer")
-            print(f"  ✓ clinic cards: {len(clinics)}  no-results div: {len(no_results)}")
-        except Exception as e:
-            driver.save_screenshot("/tmp/step4_fail.png")
-            print(f"  ❌ Timed out: {e}")
-            print(f"  URL: {driver.current_url}")
-            print("  Screenshot → /tmp/step4_fail.png")
-
-        input("\nPress ENTER to close.")
+        input("\nPress ENTER to close the browser...")
     finally:
         driver.quit()
 
