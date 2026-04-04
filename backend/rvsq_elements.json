@@ -1,0 +1,3619 @@
+[
+  {
+    "page": "login_page",
+    "url": "https://www.rvsq.gouv.qc.ca/prendrerendezvous/Principale.aspx",
+    "title": "Rendez-vous santé Québec",
+    "alerts": [
+      {
+        "classes": " js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths",
+        "id": "",
+        "tag": "html",
+        "text": "Rendez-vous santé\nEnglish\nNous joindre\nIdentification\nPrénom\nNom\nNuméro d'assura"
+      },
+      {
+        "classes": "alert ErrorMessage_ServicesAccessDenied",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Les inf"
+      },
+      {
+        "classes": "alert ErrorMessage_CaptchaInvalid",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Les car"
+      },
+      {
+        "classes": "alert ErrorMessage_FillAllFields",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert ErrorMessage_InvalideDateformat",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    La date"
+      }
+    ],
+    "buttons": [
+      {
+        "classes": "btn btn-light h-ContinueButton",
+        "id": "ctl00_ContentPlaceHolderMP_myButton",
+        "name": "ctl00$ContentPlaceHolderMP$myButton",
+        "tag": "input",
+        "text": "Continuer"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_bleu_popup",
+        "id": "btnToutAccepter",
+        "name": "",
+        "tag": "button",
+        "text": "TOUT ACCEPTER"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_blanc_popup",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "PARAMÉTRER LES TÉMOINS"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_bleu_popup",
+        "id": "btnConfirmSelect",
+        "name": "",
+        "tag": "button",
+        "text": "CONFIRMER LA SÉLECTION"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_blanc_popup",
+        "id": "btnToutAccepterParams",
+        "name": "",
+        "tag": "button",
+        "text": "TOUT ACCEPTER"
+      }
+    ],
+    "checkboxes": [
+      {
+        "classes": "form-check-input",
+        "id": "AssureForm_CSTMT",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_o",
+        "name": "_ck_o",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_p",
+        "name": "_ck_p",
+        "tag": "checkbox"
+      }
+    ],
+    "inputs": [
+      {
+        "classes": "",
+        "id": "RDVSUserId",
+        "name": "RDVSUserId",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "0"
+      },
+      {
+        "classes": "",
+        "id": "RDVSPageInfo",
+        "name": "RDVSPageInfo",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "{ \"absoluteUrl\":\"//www.rvsq.gouv.qc.ca:8"
+      },
+      {
+        "classes": "",
+        "id": "RDVSDataServices",
+        "name": "RDVSDataServices",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "{ \"dataApiUrl\":\"/api2/\" }"
+      },
+      {
+        "classes": "",
+        "id": "EnableUserTracking",
+        "name": "EnableUserTracking",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "0"
+      },
+      {
+        "classes": "",
+        "id": "RDVSCSRFToken",
+        "name": "RDVSCSRFToken",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "OgzFvCfVEckCW2RzXUxJa0Q4Tsy_iCVnzzQGJpEr"
+      },
+      {
+        "classes": "",
+        "id": "__EVENTTARGET",
+        "name": "__EVENTTARGET",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "classes": "",
+        "id": "__EVENTARGUMENT",
+        "name": "__EVENTARGUMENT",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "classes": "",
+        "id": "__VIEWSTATE",
+        "name": "__VIEWSTATE",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "/wEPDwUKMTk3NTM2Mzc2Mw8WAh4IQXBwZWxhbnQF"
+      },
+      {
+        "classes": "form-control h-FirstName loginAssure submitOnKeyPress required-field",
+        "id": "ctl00_ContentPlaceHolderMP_AssureForm_FirstName",
+        "name": "ctl00$ContentPlaceHolderMP$AssureForm_FirstName",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "form-control h-LastName loginAssure fix-margin-bottom submitOnKeyPress required-field",
+        "id": "ctl00_ContentPlaceHolderMP_AssureForm_LastName",
+        "name": "ctl00$ContentPlaceHolderMP$AssureForm_LastName",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "form-control h-NAM loginAssure submitOnKeyPress required-field",
+        "id": "ctl00_ContentPlaceHolderMP_AssureForm_NAM",
+        "name": "ctl00$ContentPlaceHolderMP$AssureForm_NAM",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "form-control h-CardSeqNumber AssureForm_CardSeqNumber inputRestriction fix-margin-bottom required-field submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureForm_CardSeqNumber",
+        "name": "ctl00$ContentPlaceHolderMP$AssureForm_CardSeqNumber",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "form-control h-LastName loginAssure fix-margin-bottom submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureForm_Email",
+        "name": "ctl00$ContentPlaceHolderMP$AssureForm_Email",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "form-control h-LastName loginAssure fix-margin-bottom submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureForm_Phone",
+        "name": "ctl00$ContentPlaceHolderMP$AssureForm_Phone",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "inputHp",
+        "id": "",
+        "name": "ctlhp3$company",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "form-control AssureForm_Day inputRestriction submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureForm_Day",
+        "name": "ctl00$ContentPlaceHolderMP$AssureForm_Day",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "",
+        "id": "",
+        "name": "AssureForm_Month_hidden",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "form-control AssureForm_Year inputRestriction submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureForm_Year",
+        "name": "ctl00$ContentPlaceHolderMP$AssureForm_Year",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "inputHp",
+        "id": "",
+        "name": "ctlhp4$zipcode",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "form-check-input",
+        "id": "AssureForm_CSTMT",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "true"
+      },
+      {
+        "classes": "inputHp",
+        "id": "",
+        "name": "ctlhp5$nationality",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "btn btn-light h-ContinueButton",
+        "id": "ctl00_ContentPlaceHolderMP_myButton",
+        "name": "ctl00$ContentPlaceHolderMP$myButton",
+        "placeholder": "",
+        "tag": "input",
+        "type": "button",
+        "value": "Continuer"
+      },
+      {
+        "classes": "",
+        "id": "ctl00_ContentPlaceHolderMP_NamObligatoire",
+        "name": "ctl00$ContentPlaceHolderMP$NamObligatoire",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "1"
+      },
+      {
+        "classes": "",
+        "id": "ctl00_ContentPlaceHolderMP_EmailObligatoire",
+        "name": "ctl00$ContentPlaceHolderMP$EmailObligatoire",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "0"
+      },
+      {
+        "classes": "",
+        "id": "ctl00_ContentPlaceHolderMP_PhoneObligatoire",
+        "name": "ctl00$ContentPlaceHolderMP$PhoneObligatoire",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "0"
+      },
+      {
+        "classes": "",
+        "id": "et",
+        "name": "ctl00$ContentPlaceHolderMP$et",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "0"
+      },
+      {
+        "classes": "",
+        "id": "gpStart",
+        "name": "ctl00$ContentPlaceHolderMP$gpStart",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "0"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_o",
+        "name": "_ck_o",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "1"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_p",
+        "name": "_ck_p",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "2"
+      },
+      {
+        "classes": "",
+        "id": "__VIEWSTATEGENERATOR",
+        "name": "__VIEWSTATEGENERATOR",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "1C049F20"
+      },
+      {
+        "classes": "",
+        "id": "__EVENTVALIDATION",
+        "name": "__EVENTVALIDATION",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "/wEdAA2A8FKobcoBXF2FpqEZVjJkJ4wofR3Izgbd"
+      }
+    ],
+    "selects": [
+      {
+        "classes": "form-select AssureForm_Month",
+        "id": "ctl00_ContentPlaceHolderMP_AssureForm_Month",
+        "name": "ctl00$ContentPlaceHolderMP$AssureForm_Month",
+        "options": [
+          "",
+          "janvier",
+          "février",
+          "mars",
+          "avril",
+          "mai",
+          "juin",
+          "juillet",
+          "août",
+          "septembre"
+        ],
+        "tag": "select"
+      }
+    ]
+  },
+  {
+    "page": "post_login_page",
+    "url": "https://www.rvsq.gouv.qc.ca/prendrerendezvous/Recherche.aspx#accueil",
+    "title": "Rendez-vous santé Québec",
+    "alerts": [
+      {
+        "classes": " js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths",
+        "id": "",
+        "tag": "html",
+        "text": "Donner mon avis\n\t\nVous présentez des symptômes de la rougeole ou avez été en con"
+      },
+      {
+        "classes": "alert WarningMessage_ExpiredNAM alert-warning mt-3",
+        "id": "",
+        "tag": "div",
+        "text": "\n            \n            Attention\n            Nos dossiers indiquent que votre"
+      },
+      {
+        "classes": "alert alert-warning WarningMessage_NoMd",
+        "id": "",
+        "tag": "div",
+        "text": "\n            \n            Attention\n            Selon nos renseignements, vous n"
+      },
+      {
+        "classes": "alert alert-danger ErrorMessage_Pilot",
+        "id": "",
+        "tag": "div",
+        "text": "\n            \n            Attention!\n            Nous sommes désolés, mais vous "
+      },
+      {
+        "classes": "alert alert-warning urgent_container insured-alert__container mt-3",
+        "id": "",
+        "tag": "div",
+        "text": "Pour toute urgence vitale, joignez les services d’urgence au 911.\n\nPour vous gui"
+      },
+      {
+        "classes": "alert alert-warning content centered",
+        "id": "",
+        "tag": "div",
+        "text": "Si les disponibilités ne vous conviennent pas, vous pourrez prendre rendez-vous "
+      },
+      {
+        "classes": "alert WarningMessage_RelationMDEnding",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                        Attention\n                    "
+      },
+      {
+        "classes": "alert WarningMessage_InscrGMFEnding",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                        Attention\n                    "
+      },
+      {
+        "classes": "alert WarningMessage_InscrFollowLocEnding",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                        Attention\n                    "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            \n                            Attention!\n           "
+      },
+      {
+        "classes": "alert alert-warning",
+        "id": "clinicsWithNoDisponibilitiesContainer",
+        "tag": "div",
+        "text": "\n                        Toutes les plages de disponibilité de votre professionn"
+      },
+      {
+        "classes": "steps bold errorMessageResultNotFoundOl",
+        "id": "clinicsWithNoDisponibilitiesCovid",
+        "tag": "ol",
+        "text": "\n                            Pour trouver une autre ressource qui offre de la co"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            \n                            Attention!\n           "
+      },
+      {
+        "classes": "alert alert-warning h-CustomMessage",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            \n                            \n                     "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                        Attention!\n                   "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    L'adres"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-primary timer-text centre",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            Temps restant pour confirmer le rendez-vous: \n     "
+      },
+      {
+        "classes": "alert alert-danger h-Error h-EmailError",
+        "id": "",
+        "tag": "div",
+        "text": "L'adresse courriel saisie est invalide."
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                \n                "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                \n                Attention!\n                \n                "
+      },
+      {
+        "classes": "alert alert-primary timer-text centre",
+        "id": "",
+        "tag": "div",
+        "text": "\n                             Temps restant pour confirmer le rendez-vous:      "
+      },
+      {
+        "classes": "infoCancelRdv alert alert-warning",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                            \n                         "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                "
+      },
+      {
+        "classes": "invalid-feedback alert alert-danger h-Error h-EmailError",
+        "id": "",
+        "tag": "div",
+        "text": "L'adresse courriel saisie est invalide."
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                \n                "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                \n                Attention!\n                \n                "
+      },
+      {
+        "classes": "alert alert-primary timer-text centre",
+        "id": "",
+        "tag": "div",
+        "text": "\n                             Temps restant pour confirmer le rendez-vous:      "
+      },
+      {
+        "classes": "infoCancelRdv alert alert-warning",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                            \n                         "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    L'adres"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-primary timer-text centre",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            Temps restant pour confirmer le rendez-vous: \n     "
+      },
+      {
+        "classes": "alert alert-danger h-Error h-EmailError",
+        "id": "",
+        "tag": "div",
+        "text": "L'adresse courriel saisie est invalide."
+      },
+      {
+        "classes": "infoCancelRdv alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                        \n                    \n            "
+      },
+      {
+        "classes": "alert-label",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        Cette annulation est irréversible.  Désirez-vous contin"
+      },
+      {
+        "classes": "alert alert-success",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                        \n                    \n            "
+      },
+      {
+        "classes": "alert-label",
+        "id": "updateCompleted",
+        "tag": "div",
+        "text": "Vos coordonnées ont été mises à jour avec succès."
+      },
+      {
+        "classes": "alert alert-info",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                        \n                    \n            "
+      },
+      {
+        "classes": "alert-label",
+        "id": "",
+        "tag": "div",
+        "text": "Vous devez mettre à jour vos coordonnées pour chacun de vos rendez-vous. Pour ce"
+      },
+      {
+        "classes": "alert alert-success",
+        "id": "",
+        "tag": "div",
+        "text": "\n                       \n                      Votre rendez-vous est annulé.\n   "
+      },
+      {
+        "classes": "alert-label",
+        "id": "",
+        "tag": "div",
+        "text": "Votre rendez-vous est annulé."
+      }
+    ],
+    "buttons": [
+      {
+        "classes": "btn-close",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": ""
+      },
+      {
+        "classes": "btn btn-primary h-CloseButton",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Fermer"
+      },
+      {
+        "classes": "h-SearchButton btn btn-primary",
+        "id": "searchbutton",
+        "name": "",
+        "tag": "button",
+        "text": "Rechercher"
+      },
+      {
+        "classes": "btn h-PreviousCalendarPage btn-default2",
+        "id": "assure-prev-btn",
+        "name": "",
+        "tag": "button",
+        "text": "  Semaine précédente"
+      },
+      {
+        "classes": "btn h-NextCalendarPage btn-default2",
+        "id": "assure-next-btn",
+        "name": "",
+        "tag": "button",
+        "text": "  Semaine suivante"
+      },
+      {
+        "classes": "btn btn-primary buttonContinueCIF",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Continuer"
+      },
+      {
+        "classes": "btn btn-primary buttonConfirmAppointment",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Confirmer le rendez-vous"
+      },
+      {
+        "classes": "btn btn-primary h-SearchApptButton",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Rechercher"
+      },
+      {
+        "classes": "btn h-BackButton",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Retour"
+      },
+      {
+        "classes": "btn btn-primary buttonConfirmAppointment",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Confirmer le rendez-vous"
+      },
+      {
+        "classes": "btn btn-primary h-UpdateMyInfoButton button-block",
+        "id": "ButtonUpdateMyInfo",
+        "name": "",
+        "tag": "button",
+        "text": "Mettre à jour mes coordonnées"
+      },
+      {
+        "classes": "btn btn-danger h-ButtonCancelAppointment fix-btn-danger-margin button-block",
+        "id": "ButtonCancelAppointment",
+        "name": "",
+        "tag": "button",
+        "text": "Annuler mon rendez-vous"
+      },
+      {
+        "classes": "btn btn-primary buttonContinueCIF",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Continuer"
+      },
+      {
+        "classes": "btn btn-primary",
+        "id": "ButtonUpdateSave",
+        "name": "",
+        "tag": "button",
+        "text": "Enregistrer"
+      },
+      {
+        "classes": "btn btn-danger",
+        "id": "ButtonCancelRdv",
+        "name": "",
+        "tag": "button",
+        "text": "Oui, annuler mon rendez-vous"
+      },
+      {
+        "classes": "btn btn-light h-BackButton",
+        "id": "ButtonErrorAppointment",
+        "name": "",
+        "tag": "button",
+        "text": "Continuer"
+      },
+      {
+        "classes": "btn btn-light h-BackButton",
+        "id": "ButtonCancelRdvNo",
+        "name": "",
+        "tag": "button",
+        "text": "Non"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_bleu_popup",
+        "id": "btnToutAccepter",
+        "name": "",
+        "tag": "button",
+        "text": "TOUT ACCEPTER"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_blanc_popup",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "PARAMÉTRER LES TÉMOINS"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_bleu_popup",
+        "id": "btnConfirmSelect",
+        "name": "",
+        "tag": "button",
+        "text": "CONFIRMER LA SÉLECTION"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_blanc_popup",
+        "id": "btnToutAccepterParams",
+        "name": "",
+        "tag": "button",
+        "text": "TOUT ACCEPTER"
+      }
+    ],
+    "checkboxes": [
+      {
+        "classes": "form-check-input",
+        "id": "chkMatin",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkPm",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkSoir",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "checkbox",
+        "id": "client_comment_CSTMT",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "EmailChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_EmailChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_EmailChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "TextChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_TextChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_TextChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "PhoneChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_PhoneChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_PhoneChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "checkbox",
+        "id": "client_comment_CSTMT",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "EmailChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_EmailChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_EmailChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "TextChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_TextChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_TextChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "PhoneChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_PhoneChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_PhoneChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_o",
+        "name": "_ck_o",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_p",
+        "name": "_ck_p",
+        "tag": "checkbox"
+      }
+    ],
+    "inputs": [
+      {
+        "classes": "",
+        "id": "RDVSUserId",
+        "name": "RDVSUserId",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "0"
+      },
+      {
+        "classes": "",
+        "id": "RDVSPageInfo",
+        "name": "RDVSPageInfo",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "{ \"absoluteUrl\":\"//www.rvsq.gouv.qc.ca:8"
+      },
+      {
+        "classes": "",
+        "id": "RDVSDataServices",
+        "name": "RDVSDataServices",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "{ \"dataApiUrl\":\"/api2/\" }"
+      },
+      {
+        "classes": "",
+        "id": "EnableUserTracking",
+        "name": "EnableUserTracking",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "0"
+      },
+      {
+        "classes": "",
+        "id": "RDVSCSRFToken",
+        "name": "RDVSCSRFToken",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "OgzFvCfVEckCW2RzXUxJa0Q4Tsy_iCVnzzQGJpEr"
+      },
+      {
+        "classes": "",
+        "id": "__VIEWSTATE",
+        "name": "__VIEWSTATE",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "/wEPDwULLTEzNDkxMDc5MTlkGAEFHl9fQ29udHJv"
+      },
+      {
+        "classes": "",
+        "id": "selectedAppointmentType",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "classes": "form-control h-DateRangeStart flatpickr-input",
+        "id": "DateRangeStart",
+        "name": "",
+        "placeholder": "jj-mm-aaaa",
+        "tag": "input",
+        "type": "text",
+        "value": "03-04-2026"
+      },
+      {
+        "classes": "form-control findOnKeyPress",
+        "id": "PostalCode",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkMatin",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "matin"
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkPm",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "matin"
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkSoir",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "matin"
+      },
+      {
+        "classes": "input span12 h-FirstName submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_FirstName",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_FirstName",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "input span12 h-LastName fix-margin-bottom submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_LastName",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_LastName",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "input IdentificationForm_Day inputRestriction submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_Day",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_Day",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "input IdentificationForm_Year inputRestriction submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_Year",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_Year",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "h-DetailledReport",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_MaleGender",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$FemaleOrMale",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "M"
+      },
+      {
+        "classes": "h-CondensedReport",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_FemaleGender",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$FemaleOrMale",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "F"
+      },
+      {
+        "classes": "form-control h-EmailTextBox ClientEmail continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_ClientEmail",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_ClientEmail",
+        "placeholder": "",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "classes": "form-control input-phone CellNumber continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_CellNumber",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_CellNumber",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "form-control input-phone HomeNumber continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_HomeNumber",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_HomeNumber",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "checkbox",
+        "id": "client_comment_CSTMT",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "on"
+      },
+      {
+        "classes": "EmailChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_EmailChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_EmailChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Courriel"
+      },
+      {
+        "classes": "TextChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_TextChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_TextChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Texto"
+      },
+      {
+        "classes": "PhoneChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_PhoneChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_PhoneChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Phone"
+      },
+      {
+        "classes": "LanguageF",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_LanguageF",
+        "name": "communication",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "French"
+      },
+      {
+        "classes": "LanguageE",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_LanguageE",
+        "name": "communication",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "English"
+      },
+      {
+        "classes": "form-control fix-margin-left updateSearchOnKeyPress",
+        "id": "Input_ReferenceNumber",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "input span12 h-FirstName submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_FirstName",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_FirstName",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "input span12 h-LastName fix-margin-bottom submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_LastName",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_LastName",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "input IdentificationForm_Day inputRestriction submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_Day",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_Day",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "input IdentificationForm_Year inputRestriction submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_Year",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_Year",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "h-DetailledReport",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_MaleGender",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$FemaleOrMale",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "M"
+      },
+      {
+        "classes": "h-CondensedReport",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_FemaleGender",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$FemaleOrMale",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "F"
+      },
+      {
+        "classes": "form-control h-EmailTextBox ClientEmail continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_ClientEmail",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_ClientEmail",
+        "placeholder": "",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "classes": "form-control input-phone CellNumber continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_CellNumber",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_CellNumber",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "form-control input-phone HomeNumber continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_HomeNumber",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_HomeNumber",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "checkbox",
+        "id": "client_comment_CSTMT",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "on"
+      },
+      {
+        "classes": "EmailChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_EmailChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_EmailChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Courriel"
+      },
+      {
+        "classes": "TextChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_TextChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_TextChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Texto"
+      },
+      {
+        "classes": "PhoneChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_PhoneChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_PhoneChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Phone"
+      },
+      {
+        "classes": "LanguageF",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_LanguageF",
+        "name": "communication2",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "French"
+      },
+      {
+        "classes": "LanguageE",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_LanguageE",
+        "name": "communication2",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "English"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_o",
+        "name": "_ck_o",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "1"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_p",
+        "name": "_ck_p",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "2"
+      },
+      {
+        "classes": "",
+        "id": "__VIEWSTATEGENERATOR",
+        "name": "__VIEWSTATEGENERATOR",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "FF7F136C"
+      },
+      {
+        "classes": "",
+        "id": "__EVENTVALIDATION",
+        "name": "__EVENTVALIDATION",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "/wEdABVq6LbD2O3yNvOY9taFlmvfeYl7m77tTWt6"
+      },
+      {
+        "classes": "numInput cur-year",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "number",
+        "value": "2026"
+      }
+    ],
+    "selects": [
+      {
+        "classes": "form-select",
+        "id": "perimeterCombo",
+        "name": "perimeterCombo",
+        "options": [
+          "10 km",
+          "20 km",
+          "30 km",
+          "40 km",
+          "50 km"
+        ],
+        "tag": "select"
+      },
+      {
+        "classes": "h-consultingReason form-select mb-3",
+        "id": "consultingReason",
+        "name": "consultingReason",
+        "options": [
+          "Choisir une raison",
+          "Consultation semi-urgente",
+          "Consultation urgente",
+          "Suivi",
+          "Suivi de grossesse",
+          "Suivi pédiatrique"
+        ],
+        "tag": "select"
+      },
+      {
+        "classes": "IdentificationForm_Month",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_Month",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_Month",
+        "options": [
+          "",
+          "janvier",
+          "février",
+          "mars",
+          "avril",
+          "mai",
+          "juin",
+          "juillet",
+          "août",
+          "septembre"
+        ],
+        "tag": "select"
+      },
+      {
+        "classes": "IdentificationForm_Month",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_Month",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_Month",
+        "options": [
+          "",
+          "janvier",
+          "février",
+          "mars",
+          "avril",
+          "mai",
+          "juin",
+          "juillet",
+          "août",
+          "septembre"
+        ],
+        "tag": "select"
+      },
+      {
+        "classes": "flatpickr-monthDropdown-months",
+        "id": "",
+        "name": "",
+        "options": [
+          "avril",
+          "mai",
+          "juin",
+          "juillet",
+          "août",
+          "septembre",
+          "octobre",
+          "novembre",
+          "décembre"
+        ],
+        "tag": "select"
+      }
+    ]
+  },
+  {
+    "page": "clinic_search_page",
+    "url": "https://www.rvsq.gouv.qc.ca/prendrerendezvous/Recherche.aspx#criteres_t1",
+    "title": "Prendre rendez-vous avec mon professionnel de la santé",
+    "alerts": [
+      {
+        "classes": " js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths",
+        "id": "",
+        "tag": "html",
+        "text": "Donner mon avis\n\t\nVous présentez des symptômes de la rougeole ou avez été en con"
+      },
+      {
+        "classes": "alert WarningMessage_ExpiredNAM alert-warning mt-3",
+        "id": "",
+        "tag": "div",
+        "text": "\n            \n            Attention\n            Nos dossiers indiquent que votre"
+      },
+      {
+        "classes": "alert alert-warning WarningMessage_NoMd",
+        "id": "",
+        "tag": "div",
+        "text": "\n            \n            Attention\n            Selon nos renseignements, vous n"
+      },
+      {
+        "classes": "alert alert-danger ErrorMessage_Pilot",
+        "id": "",
+        "tag": "div",
+        "text": "\n            \n            Attention!\n            Nous sommes désolés, mais vous "
+      },
+      {
+        "classes": "alert alert-warning urgent_container insured-alert__container mt-3",
+        "id": "",
+        "tag": "div",
+        "text": "\n            \n                Pour toute urgence vitale, joignez les services d’"
+      },
+      {
+        "classes": "alert alert-warning content centered",
+        "id": "",
+        "tag": "div",
+        "text": "Si les disponibilités ne vous conviennent pas, vous pourrez prendre rendez-vous "
+      },
+      {
+        "classes": "alert WarningMessage_RelationMDEnding",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                        Attention\n                    "
+      },
+      {
+        "classes": "alert WarningMessage_InscrGMFEnding",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                        Attention\n                    "
+      },
+      {
+        "classes": "alert WarningMessage_InscrFollowLocEnding",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                        Attention\n                    "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            \n                            Attention!\n           "
+      },
+      {
+        "classes": "alert alert-warning",
+        "id": "clinicsWithNoDisponibilitiesContainer",
+        "tag": "div",
+        "text": "\n                        Toutes les plages de disponibilité de votre professionn"
+      },
+      {
+        "classes": "steps bold errorMessageResultNotFoundOl",
+        "id": "clinicsWithNoDisponibilitiesCovid",
+        "tag": "ol",
+        "text": "\n                            Pour trouver une autre ressource qui offre de la co"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            \n                            Attention!\n           "
+      },
+      {
+        "classes": "alert alert-warning h-CustomMessage",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            \n                            \n                     "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                        Attention!\n                   "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    L'adres"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-primary timer-text centre",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            Temps restant pour confirmer le rendez-vous: \n     "
+      },
+      {
+        "classes": "alert alert-danger h-Error h-EmailError",
+        "id": "",
+        "tag": "div",
+        "text": "L'adresse courriel saisie est invalide."
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                \n                "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                \n                Attention!\n                \n                "
+      },
+      {
+        "classes": "alert alert-primary timer-text centre",
+        "id": "",
+        "tag": "div",
+        "text": "\n                             Temps restant pour confirmer le rendez-vous:      "
+      },
+      {
+        "classes": "infoCancelRdv alert alert-warning",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                            \n                         "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                "
+      },
+      {
+        "classes": "invalid-feedback alert alert-danger h-Error h-EmailError",
+        "id": "",
+        "tag": "div",
+        "text": "L'adresse courriel saisie est invalide."
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                \n                "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                \n                Attention!\n                \n                "
+      },
+      {
+        "classes": "alert alert-primary timer-text centre",
+        "id": "",
+        "tag": "div",
+        "text": "\n                             Temps restant pour confirmer le rendez-vous:      "
+      },
+      {
+        "classes": "infoCancelRdv alert alert-warning",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                            \n                         "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    L'adres"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-primary timer-text centre",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            Temps restant pour confirmer le rendez-vous: \n     "
+      },
+      {
+        "classes": "alert alert-danger h-Error h-EmailError",
+        "id": "",
+        "tag": "div",
+        "text": "L'adresse courriel saisie est invalide."
+      },
+      {
+        "classes": "infoCancelRdv alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                        \n                    \n            "
+      },
+      {
+        "classes": "alert-label",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        Cette annulation est irréversible.  Désirez-vous contin"
+      },
+      {
+        "classes": "alert alert-success",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                        \n                    \n            "
+      },
+      {
+        "classes": "alert-label",
+        "id": "updateCompleted",
+        "tag": "div",
+        "text": "Vos coordonnées ont été mises à jour avec succès."
+      },
+      {
+        "classes": "alert alert-info",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                        \n                    \n            "
+      },
+      {
+        "classes": "alert-label",
+        "id": "",
+        "tag": "div",
+        "text": "Vous devez mettre à jour vos coordonnées pour chacun de vos rendez-vous. Pour ce"
+      },
+      {
+        "classes": "alert alert-success",
+        "id": "",
+        "tag": "div",
+        "text": "\n                       \n                      Votre rendez-vous est annulé.\n   "
+      },
+      {
+        "classes": "alert-label",
+        "id": "",
+        "tag": "div",
+        "text": "Votre rendez-vous est annulé."
+      }
+    ],
+    "buttons": [
+      {
+        "classes": "btn-close",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": ""
+      },
+      {
+        "classes": "btn btn-primary h-CloseButton",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Fermer"
+      },
+      {
+        "classes": "h-SearchButton btn btn-primary",
+        "id": "searchbutton",
+        "name": "",
+        "tag": "button",
+        "text": "Rechercher"
+      },
+      {
+        "classes": "btn h-PreviousCalendarPage btn-default2",
+        "id": "assure-prev-btn",
+        "name": "",
+        "tag": "button",
+        "text": "  Semaine précédente"
+      },
+      {
+        "classes": "btn h-NextCalendarPage btn-default2",
+        "id": "assure-next-btn",
+        "name": "",
+        "tag": "button",
+        "text": "  Semaine suivante"
+      },
+      {
+        "classes": "btn btn-primary buttonContinueCIF",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Continuer"
+      },
+      {
+        "classes": "btn btn-primary buttonConfirmAppointment",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Confirmer le rendez-vous"
+      },
+      {
+        "classes": "btn btn-primary h-SearchApptButton",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Rechercher"
+      },
+      {
+        "classes": "btn h-BackButton",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Retour"
+      },
+      {
+        "classes": "btn btn-primary buttonConfirmAppointment",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Confirmer le rendez-vous"
+      },
+      {
+        "classes": "btn btn-primary h-UpdateMyInfoButton button-block",
+        "id": "ButtonUpdateMyInfo",
+        "name": "",
+        "tag": "button",
+        "text": "Mettre à jour mes coordonnées"
+      },
+      {
+        "classes": "btn btn-danger h-ButtonCancelAppointment fix-btn-danger-margin button-block",
+        "id": "ButtonCancelAppointment",
+        "name": "",
+        "tag": "button",
+        "text": "Annuler mon rendez-vous"
+      },
+      {
+        "classes": "btn btn-primary buttonContinueCIF",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Continuer"
+      },
+      {
+        "classes": "btn btn-primary",
+        "id": "ButtonUpdateSave",
+        "name": "",
+        "tag": "button",
+        "text": "Enregistrer"
+      },
+      {
+        "classes": "btn btn-danger",
+        "id": "ButtonCancelRdv",
+        "name": "",
+        "tag": "button",
+        "text": "Oui, annuler mon rendez-vous"
+      },
+      {
+        "classes": "btn btn-light h-BackButton",
+        "id": "ButtonErrorAppointment",
+        "name": "",
+        "tag": "button",
+        "text": "Continuer"
+      },
+      {
+        "classes": "btn btn-light h-BackButton",
+        "id": "ButtonCancelRdvNo",
+        "name": "",
+        "tag": "button",
+        "text": "Non"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_bleu_popup",
+        "id": "btnToutAccepter",
+        "name": "",
+        "tag": "button",
+        "text": "TOUT ACCEPTER"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_blanc_popup",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "PARAMÉTRER LES TÉMOINS"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_bleu_popup",
+        "id": "btnConfirmSelect",
+        "name": "",
+        "tag": "button",
+        "text": "CONFIRMER LA SÉLECTION"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_blanc_popup",
+        "id": "btnToutAccepterParams",
+        "name": "",
+        "tag": "button",
+        "text": "TOUT ACCEPTER"
+      }
+    ],
+    "checkboxes": [
+      {
+        "classes": "form-check-input",
+        "id": "chkMatin",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkPm",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkSoir",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "checkbox",
+        "id": "client_comment_CSTMT",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "EmailChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_EmailChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_EmailChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "TextChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_TextChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_TextChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "PhoneChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_PhoneChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_PhoneChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "checkbox",
+        "id": "client_comment_CSTMT",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "EmailChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_EmailChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_EmailChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "TextChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_TextChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_TextChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "PhoneChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_PhoneChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_PhoneChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_o",
+        "name": "_ck_o",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_p",
+        "name": "_ck_p",
+        "tag": "checkbox"
+      }
+    ],
+    "inputs": [
+      {
+        "classes": "",
+        "id": "RDVSUserId",
+        "name": "RDVSUserId",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "0"
+      },
+      {
+        "classes": "",
+        "id": "RDVSPageInfo",
+        "name": "RDVSPageInfo",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "{ \"absoluteUrl\":\"//www.rvsq.gouv.qc.ca:8"
+      },
+      {
+        "classes": "",
+        "id": "RDVSDataServices",
+        "name": "RDVSDataServices",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "{ \"dataApiUrl\":\"/api2/\" }"
+      },
+      {
+        "classes": "",
+        "id": "EnableUserTracking",
+        "name": "EnableUserTracking",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "0"
+      },
+      {
+        "classes": "",
+        "id": "RDVSCSRFToken",
+        "name": "RDVSCSRFToken",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "OgzFvCfVEckCW2RzXUxJa0Q4Tsy_iCVnzzQGJpEr"
+      },
+      {
+        "classes": "",
+        "id": "__VIEWSTATE",
+        "name": "__VIEWSTATE",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "/wEPDwULLTEzNDkxMDc5MTlkGAEFHl9fQ29udHJv"
+      },
+      {
+        "classes": "",
+        "id": "selectedAppointmentType",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "classes": "form-control h-DateRangeStart flatpickr-input",
+        "id": "DateRangeStart",
+        "name": "",
+        "placeholder": "jj-mm-aaaa",
+        "tag": "input",
+        "type": "text",
+        "value": "03-04-2026"
+      },
+      {
+        "classes": "form-control findOnKeyPress",
+        "id": "PostalCode",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkMatin",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "matin"
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkPm",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "matin"
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkSoir",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "matin"
+      },
+      {
+        "classes": "input span12 h-FirstName submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_FirstName",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_FirstName",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "input span12 h-LastName fix-margin-bottom submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_LastName",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_LastName",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "input IdentificationForm_Day inputRestriction submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_Day",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_Day",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "input IdentificationForm_Year inputRestriction submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_Year",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_Year",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "h-DetailledReport",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_MaleGender",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$FemaleOrMale",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "M"
+      },
+      {
+        "classes": "h-CondensedReport",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_FemaleGender",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$FemaleOrMale",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "F"
+      },
+      {
+        "classes": "form-control h-EmailTextBox ClientEmail continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_ClientEmail",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_ClientEmail",
+        "placeholder": "",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "classes": "form-control input-phone CellNumber continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_CellNumber",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_CellNumber",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "form-control input-phone HomeNumber continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_HomeNumber",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_HomeNumber",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "checkbox",
+        "id": "client_comment_CSTMT",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "on"
+      },
+      {
+        "classes": "EmailChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_EmailChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_EmailChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Courriel"
+      },
+      {
+        "classes": "TextChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_TextChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_TextChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Texto"
+      },
+      {
+        "classes": "PhoneChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_PhoneChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_PhoneChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Phone"
+      },
+      {
+        "classes": "LanguageF",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_LanguageF",
+        "name": "communication",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "French"
+      },
+      {
+        "classes": "LanguageE",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_LanguageE",
+        "name": "communication",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "English"
+      },
+      {
+        "classes": "form-control fix-margin-left updateSearchOnKeyPress",
+        "id": "Input_ReferenceNumber",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "input span12 h-FirstName submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_FirstName",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_FirstName",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "input span12 h-LastName fix-margin-bottom submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_LastName",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_LastName",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "input IdentificationForm_Day inputRestriction submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_Day",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_Day",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "input IdentificationForm_Year inputRestriction submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_Year",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_Year",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "h-DetailledReport",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_MaleGender",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$FemaleOrMale",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "M"
+      },
+      {
+        "classes": "h-CondensedReport",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_FemaleGender",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$FemaleOrMale",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "F"
+      },
+      {
+        "classes": "form-control h-EmailTextBox ClientEmail continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_ClientEmail",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_ClientEmail",
+        "placeholder": "",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "classes": "form-control input-phone CellNumber continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_CellNumber",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_CellNumber",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "form-control input-phone HomeNumber continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_HomeNumber",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_HomeNumber",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "checkbox",
+        "id": "client_comment_CSTMT",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "on"
+      },
+      {
+        "classes": "EmailChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_EmailChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_EmailChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Courriel"
+      },
+      {
+        "classes": "TextChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_TextChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_TextChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Texto"
+      },
+      {
+        "classes": "PhoneChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_PhoneChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_PhoneChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Phone"
+      },
+      {
+        "classes": "LanguageF",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_LanguageF",
+        "name": "communication2",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "French"
+      },
+      {
+        "classes": "LanguageE",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_LanguageE",
+        "name": "communication2",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "English"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_o",
+        "name": "_ck_o",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "1"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_p",
+        "name": "_ck_p",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "2"
+      },
+      {
+        "classes": "",
+        "id": "__VIEWSTATEGENERATOR",
+        "name": "__VIEWSTATEGENERATOR",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "FF7F136C"
+      },
+      {
+        "classes": "",
+        "id": "__EVENTVALIDATION",
+        "name": "__EVENTVALIDATION",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "/wEdABVq6LbD2O3yNvOY9taFlmvfeYl7m77tTWt6"
+      },
+      {
+        "classes": "numInput cur-year",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "number",
+        "value": "2026"
+      }
+    ],
+    "selects": [
+      {
+        "classes": "form-select",
+        "id": "perimeterCombo",
+        "name": "perimeterCombo",
+        "options": [
+          "10 km",
+          "20 km",
+          "30 km",
+          "40 km",
+          "50 km"
+        ],
+        "tag": "select"
+      },
+      {
+        "classes": "h-consultingReason form-select mb-3",
+        "id": "consultingReason",
+        "name": "consultingReason",
+        "options": [
+          "Choisir une raison",
+          "Consultation semi-urgente",
+          "Consultation urgente",
+          "Suivi",
+          "Suivi de grossesse",
+          "Suivi pédiatrique"
+        ],
+        "tag": "select"
+      },
+      {
+        "classes": "IdentificationForm_Month",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_Month",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_Month",
+        "options": [
+          "",
+          "janvier",
+          "février",
+          "mars",
+          "avril",
+          "mai",
+          "juin",
+          "juillet",
+          "août",
+          "septembre"
+        ],
+        "tag": "select"
+      },
+      {
+        "classes": "IdentificationForm_Month",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_Month",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_Month",
+        "options": [
+          "",
+          "janvier",
+          "février",
+          "mars",
+          "avril",
+          "mai",
+          "juin",
+          "juillet",
+          "août",
+          "septembre"
+        ],
+        "tag": "select"
+      },
+      {
+        "classes": "flatpickr-monthDropdown-months",
+        "id": "",
+        "name": "",
+        "options": [
+          "avril",
+          "mai",
+          "juin",
+          "juillet",
+          "août",
+          "septembre",
+          "octobre",
+          "novembre",
+          "décembre"
+        ],
+        "tag": "select"
+      }
+    ]
+  },
+  {
+    "page": "search_results_page",
+    "url": "https://www.rvsq.gouv.qc.ca/prendrerendezvous/Recherche.aspx#criteres_t1",
+    "title": "Prendre rendez-vous avec mon professionnel de la santé",
+    "alerts": [
+      {
+        "classes": " js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths",
+        "id": "",
+        "tag": "html",
+        "text": "Donner mon avis\n\t\nVous présentez des symptômes de la rougeole ou avez été en con"
+      },
+      {
+        "classes": "alert WarningMessage_ExpiredNAM alert-warning mt-3",
+        "id": "",
+        "tag": "div",
+        "text": "\n            \n            Attention\n            Nos dossiers indiquent que votre"
+      },
+      {
+        "classes": "alert alert-warning WarningMessage_NoMd",
+        "id": "",
+        "tag": "div",
+        "text": "\n            \n            Attention\n            Selon nos renseignements, vous n"
+      },
+      {
+        "classes": "alert alert-danger ErrorMessage_Pilot",
+        "id": "",
+        "tag": "div",
+        "text": "\n            \n            Attention!\n            Nous sommes désolés, mais vous "
+      },
+      {
+        "classes": "alert alert-warning urgent_container insured-alert__container mt-3",
+        "id": "",
+        "tag": "div",
+        "text": "\n            \n                Pour toute urgence vitale, joignez les services d’"
+      },
+      {
+        "classes": "alert alert-warning content centered",
+        "id": "",
+        "tag": "div",
+        "text": "Si les disponibilités ne vous conviennent pas, vous pourrez prendre rendez-vous "
+      },
+      {
+        "classes": "alert WarningMessage_RelationMDEnding",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                        Attention\n                    "
+      },
+      {
+        "classes": "alert WarningMessage_InscrGMFEnding",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                        Attention\n                    "
+      },
+      {
+        "classes": "alert WarningMessage_InscrFollowLocEnding",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                        Attention\n                    "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            \n                            Attention!\n           "
+      },
+      {
+        "classes": "alert alert-warning",
+        "id": "clinicsWithNoDisponibilitiesContainer",
+        "tag": "div",
+        "text": "Aucun rendez-vous répondant à vos critères de recherche n'est disponible pour le"
+      },
+      {
+        "classes": "steps bold errorMessageResultNotFoundOl",
+        "id": "clinicsWithNoDisponibilitiesCovid",
+        "tag": "ol",
+        "text": "\n                            Pour trouver une autre ressource qui offre de la co"
+      },
+      {
+        "classes": "searchResultMessage alert",
+        "id": "",
+        "tag": "div",
+        "text": ""
+      },
+      {
+        "classes": "searchResultMessage alert",
+        "id": "",
+        "tag": "div",
+        "text": ""
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            \n                            Attention!\n           "
+      },
+      {
+        "classes": "alert alert-warning h-CustomMessage",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            \n                            \n                     "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                        Attention!\n                   "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    L'adres"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-primary timer-text centre",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            Temps restant pour confirmer le rendez-vous: \n     "
+      },
+      {
+        "classes": "alert alert-danger h-Error h-EmailError",
+        "id": "",
+        "tag": "div",
+        "text": "L'adresse courriel saisie est invalide."
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                \n                "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                \n                Attention!\n                \n                "
+      },
+      {
+        "classes": "alert alert-primary timer-text centre",
+        "id": "",
+        "tag": "div",
+        "text": "\n                             Temps restant pour confirmer le rendez-vous:      "
+      },
+      {
+        "classes": "infoCancelRdv alert alert-warning",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                            \n                         "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                "
+      },
+      {
+        "classes": "invalid-feedback alert alert-danger h-Error h-EmailError",
+        "id": "",
+        "tag": "div",
+        "text": "L'adresse courriel saisie est invalide."
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                \n                "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                \n                Attention!\n                \n                "
+      },
+      {
+        "classes": "alert alert-primary timer-text centre",
+        "id": "",
+        "tag": "div",
+        "text": "\n                             Temps restant pour confirmer le rendez-vous:      "
+      },
+      {
+        "classes": "infoCancelRdv alert alert-warning",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        \n                            \n                         "
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    L'adres"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Le numé"
+      },
+      {
+        "classes": "alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                    Attention!\n                    Veuille"
+      },
+      {
+        "classes": "alert alert-primary timer-text centre",
+        "id": "",
+        "tag": "div",
+        "text": "\n                            Temps restant pour confirmer le rendez-vous: \n     "
+      },
+      {
+        "classes": "alert alert-danger h-Error h-EmailError",
+        "id": "",
+        "tag": "div",
+        "text": "L'adresse courriel saisie est invalide."
+      },
+      {
+        "classes": "infoCancelRdv alert alert-danger",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                        \n                    \n            "
+      },
+      {
+        "classes": "alert-label",
+        "id": "",
+        "tag": "div",
+        "text": "\n                        Cette annulation est irréversible.  Désirez-vous contin"
+      },
+      {
+        "classes": "alert alert-success",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                        \n                    \n            "
+      },
+      {
+        "classes": "alert-label",
+        "id": "updateCompleted",
+        "tag": "div",
+        "text": "Vos coordonnées ont été mises à jour avec succès."
+      },
+      {
+        "classes": "alert alert-info",
+        "id": "",
+        "tag": "div",
+        "text": "\n                    \n                        \n                    \n            "
+      },
+      {
+        "classes": "alert-label",
+        "id": "",
+        "tag": "div",
+        "text": "Vous devez mettre à jour vos coordonnées pour chacun de vos rendez-vous. Pour ce"
+      },
+      {
+        "classes": "alert alert-success",
+        "id": "",
+        "tag": "div",
+        "text": "\n                       \n                      Votre rendez-vous est annulé.\n   "
+      },
+      {
+        "classes": "alert-label",
+        "id": "",
+        "tag": "div",
+        "text": "Votre rendez-vous est annulé."
+      }
+    ],
+    "buttons": [
+      {
+        "classes": "btn-close",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": ""
+      },
+      {
+        "classes": "btn btn-primary h-CloseButton",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Fermer"
+      },
+      {
+        "classes": "h-SearchButton btn btn-primary",
+        "id": "searchbutton",
+        "name": "",
+        "tag": "button",
+        "text": "Rechercher"
+      },
+      {
+        "classes": "btn h-PreviousCalendarPage btn-default2",
+        "id": "assure-prev-btn",
+        "name": "",
+        "tag": "button",
+        "text": "  Semaine précédente"
+      },
+      {
+        "classes": "btn h-NextCalendarPage btn-default2",
+        "id": "assure-next-btn",
+        "name": "",
+        "tag": "button",
+        "text": "  Semaine suivante"
+      },
+      {
+        "classes": "btn btn-primary buttonContinueCIF",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Continuer"
+      },
+      {
+        "classes": "btn btn-primary buttonConfirmAppointment",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Confirmer le rendez-vous"
+      },
+      {
+        "classes": "btn btn-primary h-SearchApptButton",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Rechercher"
+      },
+      {
+        "classes": "btn h-BackButton",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Retour"
+      },
+      {
+        "classes": "btn btn-primary buttonConfirmAppointment",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Confirmer le rendez-vous"
+      },
+      {
+        "classes": "btn btn-primary h-UpdateMyInfoButton button-block",
+        "id": "ButtonUpdateMyInfo",
+        "name": "",
+        "tag": "button",
+        "text": "Mettre à jour mes coordonnées"
+      },
+      {
+        "classes": "btn btn-danger h-ButtonCancelAppointment fix-btn-danger-margin button-block",
+        "id": "ButtonCancelAppointment",
+        "name": "",
+        "tag": "button",
+        "text": "Annuler mon rendez-vous"
+      },
+      {
+        "classes": "btn btn-primary buttonContinueCIF",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "Continuer"
+      },
+      {
+        "classes": "btn btn-primary",
+        "id": "ButtonUpdateSave",
+        "name": "",
+        "tag": "button",
+        "text": "Enregistrer"
+      },
+      {
+        "classes": "btn btn-danger",
+        "id": "ButtonCancelRdv",
+        "name": "",
+        "tag": "button",
+        "text": "Oui, annuler mon rendez-vous"
+      },
+      {
+        "classes": "btn btn-light h-BackButton",
+        "id": "ButtonErrorAppointment",
+        "name": "",
+        "tag": "button",
+        "text": "Continuer"
+      },
+      {
+        "classes": "btn btn-light h-BackButton",
+        "id": "ButtonCancelRdvNo",
+        "name": "",
+        "tag": "button",
+        "text": "Non"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_bleu_popup",
+        "id": "btnToutAccepter",
+        "name": "",
+        "tag": "button",
+        "text": "TOUT ACCEPTER"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_blanc_popup",
+        "id": "",
+        "name": "",
+        "tag": "button",
+        "text": "PARAMÉTRER LES TÉMOINS"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_bleu_popup",
+        "id": "btnConfirmSelect",
+        "name": "",
+        "tag": "button",
+        "text": "CONFIRMER LA SÉLECTION"
+      },
+      {
+        "classes": "btn btn-block btn-popup btn_blanc_popup",
+        "id": "btnToutAccepterParams",
+        "name": "",
+        "tag": "button",
+        "text": "TOUT ACCEPTER"
+      }
+    ],
+    "checkboxes": [
+      {
+        "classes": "form-check-input",
+        "id": "chkMatin",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkPm",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkSoir",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "checkbox",
+        "id": "client_comment_CSTMT",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "EmailChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_EmailChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_EmailChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "TextChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_TextChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_TextChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "PhoneChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_PhoneChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_PhoneChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "checkbox",
+        "id": "client_comment_CSTMT",
+        "name": "",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "EmailChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_EmailChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_EmailChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "TextChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_TextChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_TextChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "PhoneChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_PhoneChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_PhoneChecked",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_o",
+        "name": "_ck_o",
+        "tag": "checkbox"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_p",
+        "name": "_ck_p",
+        "tag": "checkbox"
+      }
+    ],
+    "inputs": [
+      {
+        "classes": "",
+        "id": "RDVSUserId",
+        "name": "RDVSUserId",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "0"
+      },
+      {
+        "classes": "",
+        "id": "RDVSPageInfo",
+        "name": "RDVSPageInfo",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "{ \"absoluteUrl\":\"//www.rvsq.gouv.qc.ca:8"
+      },
+      {
+        "classes": "",
+        "id": "RDVSDataServices",
+        "name": "RDVSDataServices",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "{ \"dataApiUrl\":\"/api2/\" }"
+      },
+      {
+        "classes": "",
+        "id": "EnableUserTracking",
+        "name": "EnableUserTracking",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "0"
+      },
+      {
+        "classes": "",
+        "id": "RDVSCSRFToken",
+        "name": "RDVSCSRFToken",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "OgzFvCfVEckCW2RzXUxJa0Q4Tsy_iCVnzzQGJpEr"
+      },
+      {
+        "classes": "",
+        "id": "__VIEWSTATE",
+        "name": "__VIEWSTATE",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "/wEPDwULLTEzNDkxMDc5MTlkGAEFHl9fQ29udHJv"
+      },
+      {
+        "classes": "",
+        "id": "selectedAppointmentType",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": ""
+      },
+      {
+        "classes": "form-control h-DateRangeStart flatpickr-input",
+        "id": "DateRangeStart",
+        "name": "",
+        "placeholder": "jj-mm-aaaa",
+        "tag": "input",
+        "type": "text",
+        "value": "03-04-2026"
+      },
+      {
+        "classes": "form-control findOnKeyPress",
+        "id": "PostalCode",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkMatin",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "matin"
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkPm",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "matin"
+      },
+      {
+        "classes": "form-check-input",
+        "id": "chkSoir",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "matin"
+      },
+      {
+        "classes": "input span12 h-FirstName submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_FirstName",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_FirstName",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "input span12 h-LastName fix-margin-bottom submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_LastName",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_LastName",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "input IdentificationForm_Day inputRestriction submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_Day",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_Day",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "input IdentificationForm_Year inputRestriction submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_Year",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_Year",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "h-DetailledReport",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_MaleGender",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$FemaleOrMale",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "M"
+      },
+      {
+        "classes": "h-CondensedReport",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_FemaleGender",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$FemaleOrMale",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "F"
+      },
+      {
+        "classes": "form-control h-EmailTextBox ClientEmail continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_ClientEmail",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_ClientEmail",
+        "placeholder": "",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "classes": "form-control input-phone CellNumber continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_CellNumber",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_CellNumber",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "form-control input-phone HomeNumber continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_HomeNumber",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_HomeNumber",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "checkbox",
+        "id": "client_comment_CSTMT",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "on"
+      },
+      {
+        "classes": "EmailChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_EmailChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_EmailChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Courriel"
+      },
+      {
+        "classes": "TextChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_TextChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_TextChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Texto"
+      },
+      {
+        "classes": "PhoneChecked",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_PhoneChecked",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$ClientInfo_PhoneChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Phone"
+      },
+      {
+        "classes": "LanguageF",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_LanguageF",
+        "name": "communication",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "French"
+      },
+      {
+        "classes": "LanguageE",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_ClientInfo_LanguageE",
+        "name": "communication",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "English"
+      },
+      {
+        "classes": "form-control fix-margin-left updateSearchOnKeyPress",
+        "id": "Input_ReferenceNumber",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "input span12 h-FirstName submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_FirstName",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_FirstName",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "input span12 h-LastName fix-margin-bottom submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_LastName",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_LastName",
+        "placeholder": "",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "classes": "input IdentificationForm_Day inputRestriction submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_Day",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_Day",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "input IdentificationForm_Year inputRestriction submitOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_Year",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_Year",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "h-DetailledReport",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_MaleGender",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$FemaleOrMale",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "M"
+      },
+      {
+        "classes": "h-CondensedReport",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_FemaleGender",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$FemaleOrMale",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "F"
+      },
+      {
+        "classes": "form-control h-EmailTextBox ClientEmail continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_ClientEmail",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_ClientEmail",
+        "placeholder": "",
+        "tag": "input",
+        "type": "email",
+        "value": ""
+      },
+      {
+        "classes": "form-control input-phone CellNumber continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_CellNumber",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_CellNumber",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "form-control input-phone HomeNumber continueOnKeyPress",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_HomeNumber",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_HomeNumber",
+        "placeholder": "",
+        "tag": "input",
+        "type": "tel",
+        "value": ""
+      },
+      {
+        "classes": "checkbox",
+        "id": "client_comment_CSTMT",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "on"
+      },
+      {
+        "classes": "EmailChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_EmailChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_EmailChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Courriel"
+      },
+      {
+        "classes": "TextChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_TextChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_TextChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Texto"
+      },
+      {
+        "classes": "PhoneChecked",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_PhoneChecked",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$ClientInfo_PhoneChecked",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "Phone"
+      },
+      {
+        "classes": "LanguageF",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_LanguageF",
+        "name": "communication2",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "French"
+      },
+      {
+        "classes": "LanguageE",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_ClientInfo_LanguageE",
+        "name": "communication2",
+        "placeholder": "",
+        "tag": "input",
+        "type": "radio",
+        "value": "English"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_o",
+        "name": "_ck_o",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "1"
+      },
+      {
+        "classes": "cookie_checkbox",
+        "id": "_ck_p",
+        "name": "_ck_p",
+        "placeholder": "",
+        "tag": "input",
+        "type": "checkbox",
+        "value": "2"
+      },
+      {
+        "classes": "",
+        "id": "__VIEWSTATEGENERATOR",
+        "name": "__VIEWSTATEGENERATOR",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "FF7F136C"
+      },
+      {
+        "classes": "",
+        "id": "__EVENTVALIDATION",
+        "name": "__EVENTVALIDATION",
+        "placeholder": "",
+        "tag": "input",
+        "type": "hidden",
+        "value": "/wEdABVq6LbD2O3yNvOY9taFlmvfeYl7m77tTWt6"
+      },
+      {
+        "classes": "numInput cur-year",
+        "id": "",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "number",
+        "value": "2026"
+      }
+    ],
+    "selects": [
+      {
+        "classes": "form-select",
+        "id": "perimeterCombo",
+        "name": "perimeterCombo",
+        "options": [
+          "10 km",
+          "20 km",
+          "30 km",
+          "40 km",
+          "50 km"
+        ],
+        "tag": "select"
+      },
+      {
+        "classes": "h-consultingReason form-select mb-3",
+        "id": "consultingReason",
+        "name": "consultingReason",
+        "options": [
+          "Choisir une raison",
+          "Consultation semi-urgente",
+          "Consultation urgente",
+          "Suivi",
+          "Suivi de grossesse",
+          "Suivi pédiatrique"
+        ],
+        "tag": "select"
+      },
+      {
+        "classes": "IdentificationForm_Month",
+        "id": "ctl00_ContentPlaceHolderMP_ClientInformationForm1_IdentificationSubView_IdentificationForm_Month",
+        "name": "ctl00$ContentPlaceHolderMP$ClientInformationForm1$IdentificationSubView$IdentificationForm_Month",
+        "options": [
+          "",
+          "janvier",
+          "février",
+          "mars",
+          "avril",
+          "mai",
+          "juin",
+          "juillet",
+          "août",
+          "septembre"
+        ],
+        "tag": "select"
+      },
+      {
+        "classes": "IdentificationForm_Month",
+        "id": "ctl00_ContentPlaceHolderMP_AssureUpdateAppointment_ClientInformationForm_IdentificationSubView_IdentificationForm_Month",
+        "name": "ctl00$ContentPlaceHolderMP$AssureUpdateAppointment$ClientInformationForm$IdentificationSubView$IdentificationForm_Month",
+        "options": [
+          "",
+          "janvier",
+          "février",
+          "mars",
+          "avril",
+          "mai",
+          "juin",
+          "juillet",
+          "août",
+          "septembre"
+        ],
+        "tag": "select"
+      },
+      {
+        "classes": "flatpickr-monthDropdown-months",
+        "id": "",
+        "name": "",
+        "options": [
+          "avril",
+          "mai",
+          "juin",
+          "juillet",
+          "août",
+          "septembre",
+          "octobre",
+          "novembre",
+          "décembre"
+        ],
+        "tag": "select"
+      }
+    ]
+  }
+]
