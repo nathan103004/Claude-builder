@@ -70,6 +70,9 @@ def register(body: AuthRequest):
         "password_hash": _bcrypt.hashpw(body.password.encode(), _bcrypt.gensalt()).decode(),
         "created_at": datetime.now(timezone.utc).isoformat(),
         "email_notifications": body.email_notifications,
+        "locale": "fr",
+        "text_size": "md",
+        "postal_code": "",
     }
     users.append(user)
     _write_users(users)
@@ -86,7 +89,10 @@ def login(body: AuthRequest):
 
 
 class PreferencesRequest(BaseModel):
-    email_notifications: bool
+    email_notifications: bool = False
+    locale: str = "fr"
+    text_size: str = "md"
+    postal_code: str = ""
 
 
 @router.patch("/me/preferences")
@@ -102,5 +108,32 @@ def update_preferences(
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     user["email_notifications"] = body.email_notifications
+    user["locale"] = body.locale
+    user["text_size"] = body.text_size
+    user["postal_code"] = body.postal_code
     _write_users(users)
-    return {"email_notifications": user["email_notifications"]}
+    return {
+        "email_notifications": user["email_notifications"],
+        "locale": user["locale"],
+        "text_size": user["text_size"],
+        "postal_code": user["postal_code"],
+    }
+
+
+@router.get("/me/preferences")
+def get_preferences(
+    credentials: Optional[HTTPAuthorizationCredentials] = Depends(_bearer),
+):
+    user_id = _decode_token(credentials)
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    users = _read_users()
+    user = next((u for u in users if u["id"] == user_id), None)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return {
+        "email_notifications": user.get("email_notifications", False),
+        "locale": user.get("locale", "fr"),
+        "text_size": user.get("text_size", "md"),
+        "postal_code": user.get("postal_code", ""),
+    }
