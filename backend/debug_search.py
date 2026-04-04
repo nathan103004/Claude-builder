@@ -17,7 +17,7 @@ from rvsq.search import search_clinics
 def get_visible_driver():
     options = uc.ChromeOptions()
     options.add_argument("--window-size=1280,900")
-    return uc.Chrome(options=options)
+    return uc.Chrome(options=options, version_main=146)
 
 
 def main():
