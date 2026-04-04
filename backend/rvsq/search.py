@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, WebDriverException
+from selenium.webdriver.common.keys import Keys
 
 from models.rvsq_models import SearchParams, ClinicCard, RVSQError, SERVICE_TYPE_MAP
 from rvsq.scraper import parse_clinic_cards
@@ -17,7 +18,7 @@ DATE_ID                = "DateRangeStart"   # flatpickr date input, format jj-mm
 SERVICE_TYPE_SELECT_ID = "consultingReason" # options: "Consultation urgente", "Suivi", etc.
 SEARCH_BUTTON_ID       = "searchbutton"
 # #assure-next-btn (calendar navigation) is rendered only when results are present
-RESULTS_CONTAINER_CSS  = "#assure-next-btn"
+RESULTS_CONTAINER_CSS  = "a.h-selectClinic"  # at least one clinic card visible
 # Shown when zero clinics matched the search criteria
 NO_RESULTS_CSS         = "#clinicsWithNoDisponibilitiesContainer"
 
@@ -53,6 +54,7 @@ def _set_date(driver, date_debut):
     el = driver.find_element(By.ID, DATE_ID)
     el.clear()
     el.send_keys(date_debut)
+    el.send_keys(Keys.ESCAPE)  # close flatpickr calendar so it doesn't cover the search button
 
 
 def _set_moments(driver, moments):
@@ -118,5 +120,7 @@ def search_clinics(driver: webdriver.Chrome, params: SearchParams) -> list[Clini
         _click_search(driver)
         _wait_for_results(driver)
         return parse_clinic_cards(driver)
+    except TimeoutException:
+        return RVSQError(code="TIMEOUT", message="Search timed out — results failed to load.")
     except WebDriverException as e:
         return RVSQError(code="SESSION_EXPIRED", message=str(e))

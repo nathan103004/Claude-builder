@@ -67,6 +67,7 @@ ERROR_TO_STATUS: dict[str, int] = {
     "CLOUDFLARE":           503,
     "SLOT_TAKEN":           409,
     "NO_RESULTS":           404,
+    "TIMEOUT":              504,
     "BOOKING_FAILED":       500,
     "INVALID_SERVICE_TYPE": 422,
 }
