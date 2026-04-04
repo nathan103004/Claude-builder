@@ -47,9 +47,18 @@ def main():
     try:
         # --- Login ---
         print("\n▶ Logging in automatically...")
-        error = login_rvsq(driver, credentials)
+        try:
+            error = login_rvsq(driver, credentials)
+        except Exception as exc:
+            import traceback
+            print("  ❌ login_rvsq() raised an exception:")
+            traceback.print_exc()
+            input("Press ENTER to close.")
+            return
         if error:
             print(f"  ❌ Login failed: {error.code} — {error.message}")
+            driver.save_screenshot("/tmp/login_fail.png")
+            print("  Screenshot → /tmp/login_fail.png  (open with: open /tmp/login_fail.png)")
             input("Press ENTER to close.")
             return
         print(f"  ✓ Logged in. URL: {driver.current_url}")
@@ -97,4 +106,9 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import traceback
+    try:
+        main()
+    except Exception:
+        print("\n=== UNHANDLED EXCEPTION ===")
+        traceback.print_exc()
