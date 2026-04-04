@@ -66,3 +66,34 @@ async def test_login_unknown_email_returns_401():
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         r = await client.post("/auth/login", json={"email": "nobody@x.com", "password": "Pass1!"})
     assert r.status_code == 401
+
+
+@pytest.mark.asyncio
+async def test_register_creates_email_notifications_false():
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        await client.post("/auth/register", json={"email": "notif@test.com", "password": "Pass1!"})
+    users = json.loads(open(USERS_FILE).read())
+    assert users[0].get("email_notifications") is False
+
+
+@pytest.mark.asyncio
+async def test_patch_preferences_requires_auth():
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        r = await client.patch("/auth/me/preferences", json={"email_notifications": True})
+    assert r.status_code == 401
+
+
+@pytest.mark.asyncio
+async def test_patch_preferences_toggles_field():
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        reg = await client.post("/auth/register", json={"email": "pref@test.com", "password": "Pass1!"})
+        token = reg.json()["token"]
+        r = await client.patch(
+            "/auth/me/preferences",
+            json={"email_notifications": True},
+            headers={"Authorization": f"Bearer {token}"},
+        )
+    assert r.status_code == 200
+    assert r.json()["email_notifications"] is True
+    users = json.loads(open(USERS_FILE).read())
+    assert users[0]["email_notifications"] is True
