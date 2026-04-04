@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { useOnboarding } from '@/context/OnboardingContext';
 import ServiceTypeSelector, { RvsqServiceType } from '@/components/dashboard/ServiceTypeSelector';
 import EmergencyPrompt from '@/components/dashboard/EmergencyPrompt';
+import ChatPanel from '@/components/dashboard/ChatPanel';
 
 interface Slot {
   date: string;
@@ -131,6 +132,12 @@ export default function DashboardPage({ params: { locale } }: { params: { locale
             {/* TODO: ClinicCards component goes here (teammate #18) */}
           </>
         )}
+
+        <ChatPanel
+          locale={locale}
+          onServiceTypeSelect={setServiceType}
+          onEmergencySelect={() => setShowEmergency(true)}
+        />
 
         {/* Toast */}
         {toast && (
