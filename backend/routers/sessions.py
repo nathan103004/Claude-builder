@@ -12,7 +12,13 @@ from pydantic import BaseModel
 router = APIRouter(prefix="/sessions", tags=["sessions"])
 _log = logging.getLogger(__name__)
 
-# session_id -> { queue, task, postal_code, service_type }
+# Polling timing constants
+_POLL_INTERVAL = 5          # seconds between each search
+_NO_RESULTS_TIMEOUT = 600   # seconds before pausing (10 minutes)
+_PAUSE_DURATION = 3600      # seconds to pause before retrying (1 hour)
+_PAUSE_ADVERTISED = 3600    # retry_in value reported to clients (always 1 hour)
+
+# session_id -> { queue, task, postal_code, service_type, user_email, notify }
 _sessions: dict[str, dict] = {}
 
 
@@ -40,8 +46,7 @@ def _stub_rvsq_search(postal_code: str, service_type: str) -> list[dict]:
 
 
 async def _poll(session_id: str) -> None:
-    interval = 300    # 5 min
-    max_interval = 1800  # 30 min
+    no_results_elapsed = 0
 
     while session_id in _sessions:
         session = _sessions[session_id]
@@ -53,14 +58,26 @@ async def _poll(session_id: str) -> None:
                 session["service_type"],
             )
             await session["queue"].put({"type": "clinics", "data": results})
-            _log.debug("New results for session %s — would email if opted in", session_id)
-            interval = 300
+
+            has_slots = any(slot for clinic in results for slot in clinic.get("slots", []))
+            if has_slots:
+                no_results_elapsed = 0
+            else:
+                no_results_elapsed += _POLL_INTERVAL
+                if no_results_elapsed >= _NO_RESULTS_TIMEOUT:
+                    await session["queue"].put({"type": "paused", "retry_in": _PAUSE_ADVERTISED})
+                    try:
+                        await asyncio.sleep(_PAUSE_DURATION)
+                    except asyncio.CancelledError:
+                        break
+                    no_results_elapsed = 0
+                    continue
+
         except Exception:
-            interval = min(interval * 2, max_interval)
-            await session["queue"].put({"type": "error", "retry_in": interval})
+            await session["queue"].put({"type": "error", "retry_in": 300})
 
         try:
-            await asyncio.sleep(interval)
+            await asyncio.sleep(_POLL_INTERVAL)
         except asyncio.CancelledError:
             break
 
@@ -88,6 +105,7 @@ async def _event_generator(session_id: str) -> AsyncIterator[str]:
 class SessionRequest(BaseModel):
     postal_code: str
     service_type: str = "Consultation urgente"
+    token: str | None = None
 
 
 @router.post("", status_code=201)
@@ -100,6 +118,8 @@ async def create_session(body: SessionRequest):
         "task": task,
         "postal_code": body.postal_code,
         "service_type": body.service_type,
+        "user_email": None,
+        "notify": False,
     }
     return {"session_id": session_id}
 

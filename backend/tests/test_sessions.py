@@ -80,3 +80,101 @@ async def test_stub_rvsq_returns_clinic_list():
     for slot in clinic["slots"]:
         assert "date" in slot
         assert "time" in slot
+
+
+@pytest.mark.asyncio
+async def test_poll_uses_5s_interval(monkeypatch):
+    """_poll sleeps for 5 seconds between successful polls (not 300)."""
+    import uuid as _uuid
+    from routers.sessions import _sessions, _poll
+
+    sleep_calls = []
+    original_sleep = asyncio.sleep
+
+    async def tracking_sleep(seconds):
+        sleep_calls.append(seconds)
+        if seconds >= 10:
+            # Don't actually wait long in tests
+            return
+        await original_sleep(seconds)
+
+    monkeypatch.setattr(asyncio, "sleep", tracking_sleep)
+
+    session_id = str(_uuid.uuid4())
+    queue = asyncio.Queue()
+    _sessions[session_id] = {
+        "queue": queue, "task": None,
+        "postal_code": "H9K 1P9", "service_type": "Consultation urgente",
+        "user_email": None, "notify": False,
+    }
+    task = asyncio.create_task(_poll(session_id))
+    await asyncio.sleep(0.2)
+    _sessions.pop(session_id, None)
+    task.cancel()
+    try:
+        await task
+    except asyncio.CancelledError:
+        pass
+
+    # At least one sleep call should have been 5 seconds
+    assert any(s == 5 for s in sleep_calls), f"Expected 5s sleep, got: {sleep_calls}"
+
+
+@pytest.mark.asyncio
+async def test_poll_sends_paused_event_after_no_results(monkeypatch):
+    """After 10 minutes of no slots, _poll pushes a paused event."""
+    import uuid as _uuid
+    from routers import sessions as sessions_mod
+    from routers.sessions import _sessions, _poll
+
+    # Stub returns clinics with NO slots
+    def empty_search(postal_code, service_type):
+        return [{"clinic_name": "Clinique Test", "address": "123 Rue Test", "slots": []}]
+
+    monkeypatch.setattr(sessions_mod, "_stub_rvsq_search", empty_search)
+
+    # Make time advance fast: each 5s sleep counts as 601s worth of no-results time
+    no_results_elapsed = 0
+    original_sleep = asyncio.sleep
+
+    async def fast_sleep(seconds):
+        nonlocal no_results_elapsed
+        if seconds == 5:
+            no_results_elapsed += 601  # jump past the 600s threshold immediately
+        elif seconds >= 3600:
+            return  # skip the hour sleep
+        else:
+            await original_sleep(min(seconds, 0.01))
+
+    monkeypatch.setattr(asyncio, "sleep", fast_sleep)
+
+    # Patch the no_results tracking by directly manipulating the threshold
+    # Instead, just patch _NO_RESULTS_TIMEOUT to 0 so it triggers immediately
+    monkeypatch.setattr(sessions_mod, "_NO_RESULTS_TIMEOUT", 0)
+    monkeypatch.setattr(sessions_mod, "_PAUSE_DURATION", 0)
+
+    session_id = str(_uuid.uuid4())
+    queue = asyncio.Queue()
+    _sessions[session_id] = {
+        "queue": queue, "task": None,
+        "postal_code": "H9K 1P9", "service_type": "Consultation urgente",
+        "user_email": None, "notify": False,
+    }
+    task = asyncio.create_task(_poll(session_id))
+    await asyncio.sleep(0.3)
+    _sessions.pop(session_id, None)
+    task.cancel()
+    try:
+        await task
+    except asyncio.CancelledError:
+        pass
+
+    # Collect all queued events
+    events = []
+    while not queue.empty():
+        events.append(await queue.get())
+
+    event_types = [e.get("type") for e in events]
+    assert "paused" in event_types, f"Expected paused event, got: {event_types}"
+    paused_event = next(e for e in events if e.get("type") == "paused")
+    assert paused_event.get("retry_in") == 3600
